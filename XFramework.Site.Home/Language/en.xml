@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <item key="product-category-root-id">9</item>
+    <item key="site-top-logo-link-text"><![CDATA[<a href="/" title="机械发展科技股份有限公司--创新、优质、用户满意"><img src="/images/top_bar_en.jpg" alt="机械发展科技股份有限公司--创新、优质、用户满意" /></a>]]></item>
+    <item key="current-text">Current</item>
+    <item key="channel-sub-nav-home-text">Home</item>
+    <item key="article-publish-date-text">Publish Date</item>
+    <item key="more-text">More</item>
+    <item key="site-top-nav-text">
+        <![CDATA[<a href="#">Set as Homepage</a> | <a href="javascript:void(0);" onclick="bookmark('机科发展科技股份有限公司','http://www.mtd.com.cn');return false;">Add to Favorite</a> | <a href="http://www.mtd.com.cn/">中文版</a>]]>
+    </item>
+    <item key="footer-text">
+        <![CDATA[<p class="footer_logo"><img src="/images/logo.jpg" /></p><p class="footer_info">Copyright © 1999-2012, MTD, All Rights Reserved<br />Address：NO.2 South ShouTi Road, HaiDian District, Beijing<br />备案号：京ICP备09075358号</p><p class="copright_map"><a href="copyright.html">Privacy Statement</a> | <a href="Sitemap.html">Sitemap</a> | <a href="contact.html">Contact MTD</a> | <a href="#">Count</a></p>]]>
+    </item>
+    <item key="footer-friendlink-text">
+    </item>
+</root>

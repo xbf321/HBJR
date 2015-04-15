@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "公告管理";
+
+    var noticeInfo = ViewBag.NoticeInfo;
+    string title = noticeInfo.Item1;
+    string url = noticeInfo.Item2;
+    int sort = noticeInfo.Item3;
+}
+<fieldset>
+    <legend>公告管理</legend>
+    <div class="pull-right"><a href="?" class="btn btn-primary btn-add">新建公告</a></div>
+    <div class="clearfix"></div>
+    <div class="box-10"></div>
+    @Html.ValidationSummary()
+    <form method="post" class="form-horizontal">
+      <div class="form-group">
+        <label  class="col-sm-1 control-label">标题：</label>
+        <div class="col-sm-11">
+            @Html.TextBox("title", title,new { placeholder = "标题", @class="form-control"})
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">链接：</label>
+        <div class="col-sm-11">
+           @Html.TextBox("url", url, new { placeholder = "链接地址", @class = "form-control" })
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-1 control-label">排序：</label>
+        <div class="col-sm-11">
+          @Html.TextBox("sort", sort, new { placeholder = "排序", @class = "form-control" })
+        </div>
+      </div>       
+      <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-11">
+          <button type="submit" class="btn btn-primary">保存</button>
+        </div>
+      </div>
+    </form>
+     <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>
+                标题
+            </th>
+            <th>
+                链接
+            </th>
+            <th>
+                排序
+            </th>
+            <th>
+                操作
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.NoticeList)
+            {
+                <tr>
+                    <td>@item.Item1
+                    </td>
+                    <td>@item.Item2
+                    </td>
+                    <td>@item.Item3
+                    </td>
+                    <td>
+                        <a href="?guid=@(item.Item4)">编辑</a>|<a href="javascript:void(0);" onclick="del('@(item.Item4)');">删除</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+</fieldset>
+<script type="text/javascript">
+    function del(guid) {
+        if (window.confirm('确定？')) {
+            window.location.href = '?m=delete&guid=' + guid;
+            return false;
+        }
+        return false;
+    }
+</script>

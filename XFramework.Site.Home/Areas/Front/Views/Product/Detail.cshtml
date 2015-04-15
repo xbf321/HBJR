@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "../Shared/_ChannelLayout.cshtml";
+    ViewBag.Title = Model.Title;
+}
+<section class="product-detail">
+    <h2 class="title">@Model.Title</h2>
+    <div class="sub-title">浏览数：@Model.ViewCount</div>
+    <div class="pic"><img src="@Model.BImageUrl" /></div>
+    <div class="content">@Html.Raw(Model.Content)</div>
+</section>

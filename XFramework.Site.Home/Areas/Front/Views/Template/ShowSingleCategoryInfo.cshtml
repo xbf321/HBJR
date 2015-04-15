@@ -1,0 +1,9 @@
+﻿@{
+    var introduction = ViewBag.CurrentCategoryInfo.Introduction;
+    if(string.IsNullOrEmpty(introduction)){
+        introduction = "暂无信息";
+    }
+    }
+<div class="about_info wzfont">
+    @Html.Raw(introduction)
+</div>

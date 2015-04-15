@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "../Shared/_ChannelLayout.cshtml";
+}
+<table cellspacing="0" cellpadding="0" border="0" align="center" width="94%" style="table-layout: fixed;">
+    <tbody>
+        <tr>
+            <td align="center" valign="bottom" colspan="2" style="word-wrap: break-word;">
+                <h3>
+                    <b><font class="ReadNewsTitle"><font color="#336699">@Model.Title</font></font></b>
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+                <hr size="1" align="center" width="100%" />
+            </td>
+        </tr>
+        <tr>
+            <td align="center" class="ndetail_date" colspan="2">
+                @(XFramework.Common.LanguageResourceHelper.GetString("article-publish-date-text", PageData["Language"]))：@Model.PublishDateTime.ToString("yyyy-MM-dd")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="ndetail_info">
+                @Html.Raw(Model.Content)
+            </td>
+        </tr>
+    </tbody>
+</table>

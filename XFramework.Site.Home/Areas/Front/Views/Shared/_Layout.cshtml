@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - 河北九荣贸易有限公司</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=7" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta name="author" content="兴百放,xbf321(at)gmail.com" />
+    <meta name="Keywords" content="@(ViewBag.Keywords != null ? ViewBag.Keywords : "")" />
+    <meta name="Description" content="@(ViewBag.Description != null ? ViewBag.Description : "")" />
+    <link href="@Url.Content("~/styles/site.css")" rel="stylesheet" type="text/css" />
+    <script src="/scripts/jquery.min.js"></script>
+    <script type="text/javascript">
+        var _GLOBAL = { rootId: 0, language: '@(PageData["Language"])' };
+        function bookmark(title, url) {
+            if (document.all)
+                window.external.AddFavorite(url, title);
+            else if (window.sidebar)
+                window.sidebar.addPanel(title, url, "");
+        }
+    </script>
+    @RenderSection("header", false)
+</head>
+<body>
+    <!--logo banner begin-->
+    <div class="topbg_bar">
+        <div id="top_bar">
+            <div class="top_nav">@Html.Raw(XFramework.Common.LanguageResourceHelper.GetString("site-top-nav-text", PageData["Language"]))</div>
+            @Html.Raw(XFramework.Common.LanguageResourceHelper.GetString("site-top-logo-link-text", PageData["Language"]))</div>
+    </div>
+    <!--logo banner end-->
+    <!--menuSearch begin-->
+    <div class="menuSearch_bg">
+        <ul id="menu_bar">
+            @Html.Action("RenderHeaderMenu", "Home", new { Language = PageData["Language"] })
+        </ul>
+        <span class="clear"></span>
+    </div>
+    @RenderBody()
+
+    @Html.Raw(XFramework.Common.LanguageResourceHelper.GetString("footer-friendlink-text", PageData["Language"]))
+
+    <span class="box_10"></span>
+    <!--footer begin-->
+    <div id="footer_bar">
+        <div class="footer_logoinfo">
+            @Html.Raw(XFramework.Common.LanguageResourceHelper.GetString("footer-text", PageData["Language"]))
+        </div>
+    </div>
+    <!--footer end-->
+    <script type="text/javascript">
+        $(function(){
+            $('#menu_bar li').each(function(index,item){
+                var currentItem = $(item),
+                    id = parseInt(currentItem.attr('id'),10);
+                if(_GLOBAL.rootId === id){
+                    currentItem.addClass('on');
+                }else{
+                    currentItem.removeClass('on');
+                }
+            });
+
+            $('#ddlLink1,#ddlLink2,#ddlLink3').each(function(index,item){
+                $(item).bind('change',function(){
+                    if (this.value !== "0") {
+                        window.open(this.value);
+                    }
+                });
+            });
+
+            @RenderSection("scriptready",false)
+        });
+    </script>
+    @RenderSection("footer", false)
+</body>
+</html>

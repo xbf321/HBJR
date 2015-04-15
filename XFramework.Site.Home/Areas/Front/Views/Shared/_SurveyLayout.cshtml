@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "_ChannelLayout.cshtml";
+
+    ViewBag.RootCategoryInfo = XFramework.Services.CategoryService.Get(87);
+    ViewBag.CurrentCategoryInfo = XFramework.Services.CategoryService.Get(90);
+}
+@section header{
+    @RenderSection("header", false)
+}
+@RenderBody()
+@section scriptready{
+    @RenderSection("scriptready",false)
+}
+@section footer{
+    @RenderSection("footer", false)
+}

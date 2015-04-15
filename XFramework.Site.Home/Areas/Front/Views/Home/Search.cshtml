@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+
+    var q = Controleng.Common.CECRequest.GetQueryString("q");
+    ViewBag.Title = string.Format("{0} - 搜索结果",q);
+}
+@section header{
+    <style type="text/css">
+        #adBlock{ display:none;}
+    </style>
+}
+<div class="main">
+</div>

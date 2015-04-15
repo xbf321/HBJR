@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "管理员列表";
+    Layout = "../Shared/_Layout.cshtml";
+}
+<fieldset>
+    <legend>管理员列表</legend>
+    <div class="pull-right"><a href="add" class="btn btn-primary btn-add">添加用户</a></div>
+    <div class="clearfix"></div>
+    <div class="box-10"></div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+        <thead>
+        <tr>
+           <th>用户名</th>
+           <th>创建时间</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in ViewBag.UserList){
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.CreateDateTime</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    </div>
+</fieldset>
+

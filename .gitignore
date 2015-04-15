@@ -1,0 +1,12 @@
+/XFramework.Core/bin
+/XFramework.Core/obj
+/XFramework.Site.Home/bin
+/XFramework.Site.Home/obj
+/XFramework.Site.Home/Properties
+/XFramework.Site.Home/Upload
+
+/XFramework.suo
+/XFramework.Core/XFramework.Core.csproj.DotSettings.user
+/XFramework.Site.Home/XFramework.Site.Home.csproj.DotSettings.user
+/XFramework.Site.Home/XFramework.Site.Home.csproj.user
+/Database

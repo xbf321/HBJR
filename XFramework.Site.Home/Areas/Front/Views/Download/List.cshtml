@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "../Shared/_ChannelLayout.cshtml";
+    ViewBag.Title = "相关下载";
+}
+<div class="comment_title">
+    <h3>
+        相关下载</h3>
+</div>
+<span class="clear"></span>
+<div class="down_bar">
+    <span class="box_20"></span>
+    <table width="96%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#E7F3FF">
+        <tr>
+            <td align="center" bgcolor="#F7FBFF">
+                <strong>资料名称</strong>
+            </td>
+            <td align="center" bgcolor="#F7FBFF">
+                <strong>文件大小</strong>
+            </td>
+            <td align="center" bgcolor="#F7FBFF">
+                <strong>文件格式</strong>
+            </td>
+            <td align="center" bgcolor="#F7FBFF">
+                <strong>立即下载</strong>
+            </td>
+        </tr>
+        @foreach (var item in ViewBag.List)
+        {
+            <tr>
+                <td bgcolor="#FFFFFF">
+                    <ul>
+                        <li>@(item.Title)</li>
+                    </ul>
+                </td>
+                <td align="center" bgcolor="#FFFFFF">
+                    @(item.Size)M
+                </td>
+                <td align="center" bgcolor="#FFFFFF">
+                    @(item.FileType)
+                </td>
+                <td align="center" bgcolor="#FFFFFF" valign="middle">
+                    <a href="@(item.Url)" target="_blank">
+                        <img src="/images/elect_downbtn.jpg" width="64" height="19" /></a>
+                </td>
+            </tr>
+        }
+    </table>
+    <span class="box_20"></span>
+    @Html.Raw(XFramework.Common.PagerBarHelper.Render(ViewBag.List.PageIndex, ViewBag.List.PageSize, ViewBag.List.TotalItemCount, new { @class = "pagebar" }))
+</div>

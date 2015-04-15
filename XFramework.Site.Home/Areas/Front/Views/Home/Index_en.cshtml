@@ -1,0 +1,168 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "河北九荣贸易有限公司";
+    //产品服务
+    var productService = ViewBag.ProductService;
+}
+@section header{
+    <style type="text/css">
+        .focus-pic-list { 	height : 304px;	overflow : hidden;	width : 730px; }
+        #focusImg1 { 	height : 190px;	overflow : hidden;	position : relative;	width : 210px; }
+        #focusImg1 .f1number { 	bottom : 25px;	position : absolute;	right : 10px;	z-index : 99999; }
+        #focusImg1 .f1number li { 	background : #3c3c3c;	color : #fff;	cursor : pointer;	display : inline;	filter : alpha(opacity=80);	float : left;	font-size : 14px;	height : 20px;	line-height : 20px;	margin-left : 2px;	opacity : 0.8;	overflow : hidden;	text-align : center;	width : 20px; }
+        #focusImg1 .f1number li.hot { 	background : #000;	color : #fff;	font-weight : bold; }
+        #focusImg1 .f1Content { 	overflow : hidden; }
+        #focusImg1 .f1ContentImg li { 	overflow : hidden; }
+        #focusImg1 .f1Text { 	bottom : 0px;	height : 20px;	overflow : hidden;	position : absolute;	text-align : center; }
+        .links_bar select{width:260px;}
+    </style>
+    <script type="text/javascript">
+        _GLOBAL.rootId = -1;
+    </script>
+}
+@*<div class="hotnews_bg">
+    <div id="hotnews_search_bar">
+        <div class="hotnews_bar">
+            <p style="float:left;"><strong>公告： </strong></p>
+            <div id="notice" style="float:left;">
+                <ul class="notice-list">
+                    @foreach (var item in ViewBag.NoticeList)
+                    {
+                        <a href="@item.Item2" title="@item.Item1">@item.Item1</a>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="search_bar">
+            <input name="textfield" type="text" id="textfield" value="请输入关键词" size="15" />
+            <a href="#">
+                <img src="images/search_btn.gif" alt="搜索" width="59" height="18" align="absmiddle" /></a></div>
+    </div>
+</div>*@
+<!--menuSearch end-->
+<span class="box_10"></span>
+<div class="main">
+    <!--products begin-->
+    <div id="products_bar">
+        <div class="products_pic">
+            <ul class="focus-pic-list">
+                @foreach (var item in productService)
+                {
+                    <li><a href="@item.Url" title="@item.Name">
+                        <img src="@item.ImageUrl" alt="@item.Name" /></a></li>
+                }
+            </ul>
+        </div>
+        <div class="products_nav">
+            <h2>
+                产品与服务</h2>
+            <ul class="focus-text-list">
+                @{
+                    for (int i = 0; i < productService.Count; i++)
+                    { 
+                    <li@Html.Raw(i == 0 ? " class=\"on\"" : "")><a href="@productService[i].Url" title="@productService[i].Name">@productService[i].Name</a></li>
+                    }
+                }
+            </ul>
+        </div>
+        <span class="clear"></span>
+    </div>
+    <!--products end-->
+    <span class="box_10"></span>
+    <!--nwesResults begin-->
+    @*<div class="newsResults_bar">
+        <div id="news_jiaodiantu">
+            <!--焦点图-->
+            <div id="focusImg1">
+                <ul class="f1number" id="myTab_btns">
+                    @{var focusImageCount = ViewBag.FocusImageList.Count;}
+                    @for (var i = 1; i <= focusImageCount; i++)
+                    { 
+                        <li@Html.Raw((i == 1 ? " class=\"hot\"" : string.Empty))>@(i)</li>
+                    }
+                </ul>
+                <div class="f1Content" id="main">
+                    <ul class="f1ContentImg">
+                        @foreach (var item in ViewBag.FocusImageList)
+                        { 
+                            <li><a href="@item.Url" title="@item.Title">
+                                <img src="@item.ImageUrl" alt="@item.Title" width="210px" height="170px" /></a></li>
+                        }
+                    </ul>
+                    <ul class="f1Text">
+                        @foreach (var item in ViewBag.FocusImageList)
+                        { 
+                            <li><a href="@item.Url" title="@item.Title">
+                                @Goodspeed.Common.CharHelper.Truncate(item.Title,24)</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <!--焦点图 /-->
+        </div>
+        <div id="company_industry_news">
+            <ul class="CInews_title kissy-switch-nav-news">
+                <li class="on"><a href="/channel/14.html" class="white">企业新闻</a></li>
+                <li><a href="/channel/15.html">行业新闻</a></li>
+            </ul>
+            <span class="box_5"></span>
+            <div class="kissy-switch-content-news">
+                <ul class="CI_newslist">
+                    @foreach (var item in ViewBag.CompanyNews)
+                    { 
+                        <li>
+                            <div class="CI_newslist_l">
+                                <a href="@item.Url" class="gray" title="@item.Title">@Goodspeed.Common.CharHelper.Truncate(item.Title, 30)</a></div>
+                            <p class="CI_newsdate">
+                                @item.PublishDateTime.ToString("yyyy-MM-dd")</p>
+                            <span class="clear"></span></li>
+                    }
+                    <span class="clear"></span>
+                </ul>
+                <ul class="CI_newslist" style="display: none">
+                    @foreach (var item in ViewBag.IndustryNews)
+                    { <li>
+                        <div class="CI_newslist_l">
+                            <a href="@item.Url" class="gray" title="@item.Title">@Goodspeed.Common.CharHelper.Truncate(item.Title, 30)</a></div>
+                        <p class="CI_newsdate">
+                            @item.PublishDateTime.ToString("yyyy-MM-dd")</p>
+                        <span class="clear"></span></li>}
+                    <span class="clear"></span>
+                </ul>
+            </div>
+        </div>
+        <div id="Results_bar">
+            <h2>
+                企业业绩</h2>
+            <span class="box_5"></span>
+            <ul class="Resultslist">
+                @foreach (var item in ViewBag.Business)
+                { 
+                    <li><a href="@item.Url" class="gray" title="@item.Title">@Goodspeed.Common.CharHelper.Truncate(item.Title, 22)</a></li>
+                }
+            </ul>
+        </div>
+    </div>*@
+    <!--nwesResults end-->
+    <!--links begin-->
+    <!--links end-->
+    <span class="box_10"></span>
+</div>
+@section footer{
+    <script type="text/javascript">
+        KISSY.use("switchable", function (S, Switchable) {
+            var Slide = S.Slide, Easing = S.Easing, Tabs = S.Tabs, DOM = S.DOM;
+            S.ready(function (S) {
+                var slide = new Slide('#products_bar', {
+                    contentCls: 'focus-pic-list',
+                    navCls: 'focus-text-list',
+                    activeTriggerCls: 'on',
+                    delay: .2,
+                    effect: 'fade',
+                    easing: 'easeBoth',
+                    duration: .8
+                });
+            });
+        });
+    </script>
+}

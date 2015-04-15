@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+}
+@section header{
+    <script type="text/javascript">
+        _GLOBAL.rootId = @(ViewBag.RootCategoryInfo.Id);
+    </script>
+    @RenderSection("header", false)
+}
+<span class="box_10"></span>
+<div class="main">
+    <div class="left_box">
+        <h2>
+            <img src="@ViewBag.RootCategoryInfo.BannerAdImageUrl" alt="@ViewBag.RootCategoryInfo.Name"/></h2>
+        <span class="box_10"></span>
+        <ul class="about_list2">
+            @Html.Action("SubCategoryListForChannelPage", "Channel", new { rootId = ViewBag.RootCategoryInfo.Id, selectedId = ViewBag.CurrentCategoryInfo.Id, language = PageData["Language"],url="/product/?cid={0}" })
+        </ul>
+    </div>
+    <div class="right_box">
+        <p class="weizhi_bar">
+            @Html.Action("RenderSubNavForChannelPage", "Channel", new { catId = ViewBag.CurrentCategoryInfo.Id, customTitle = ViewBag.SubNavCustomTitle, language = PageData["Language"] })
+        </p>
+        <span class="box_10"></span>
+        @RenderBody()
+    </div>
+</div>
+@section scriptready{        
+        $('.about_list2 h3').each(function(index,item){
+            $(item).bind('mouseover',function(){
+                $(this).next('ul').show().siblings('ul').hide();
+            });
+        });
+        @RenderSection("scriptready",false)
+}
+@section footer{
+    @RenderSection("footer", false)
+}

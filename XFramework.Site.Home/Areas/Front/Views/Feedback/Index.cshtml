@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "../Shared/_ChannelLayout.cshtml";
+    ViewBag.Title = "在线留言";
+    //在线互动
+    ViewBag.RootCategoryInfo = XFramework.Services.CategoryService.Get(87);
+    //在线留言
+    ViewBag.CurrentCategoryInfo = XFramework.Services.CategoryService.Get(88);
+    
+}
+@model XFramework.Model.FeedbackInfo
+<div class="comment_title">
+    <h3>
+        @ViewBag.Title</h3>
+</div>
+<span class="clear"></span>
+<form method="post">
+<div id="Comment_bar">
+    @if(ViewBag.Msg != null){
+        <div class="success">@Html.Raw(ViewBag.Msg)</div>
+    }
+    @Html.ValidationSummary()
+    <ul>
+        <p class="comment_shuom">
+            (请填写以下内容，<span class="redao">“*” 为必填项</span>。)</p>
+        <span class="box_20"></span>
+        <li><span class="liuy_title"><span class="redao">*</span> 姓 名：</span>
+            @Html.TextBoxFor(m => m.Realname)
+            <span class="box_10"></span></li>
+        <li><span class="liuy_title"><span class="redao">*</span> 邮 箱：</span>
+            @Html.TextBoxFor(m => m.Email)
+            <span class="box_10"></span></li>
+        <li><span class="liuy_title">&nbsp; 电 话：</span>
+            @Html.TextBoxFor(m => m.Phone)
+            <span class="box_10"></span></li>
+        <li><span class="liuy_title"><span class="redao">*</span> 标 题：</span>
+            @Html.TextBoxFor(m => m.Title)
+            <span class="box_10"></span></li>
+        <li><span class="liuy_title"><span class="redao">*</span> 内 容：</span>
+            @Html.TextAreaFor(m => m.Content, new { cols = "45", rows = "5" })
+            <span class="box_10"></span></li>
+        <li class="btn">
+            <input type="submit" value="提交" />
+        </li>
+    </ul>
+</div>
+</form>
+@section scriptready{
+    window.setTimeout(function () {
+        if ($('.success')) {
+            $('.success').slideUp();
+        }
+    },4000);    
+}

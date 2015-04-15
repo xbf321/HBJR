@@ -1,0 +1,86 @@
+﻿@model XFramework.Model.ProductInfo
+@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "添加或编辑产品";
+    bool isAdd = Controleng.Common.CECRequest.GetQueryInt("id", 0) > 0 ? false : true;
+}
+@section header{
+    <script type="text/javascript">
+        _GLOBAL.editorId = 'Content';
+    </script>
+}
+<fieldset>
+    <legend>@(isAdd ? "新增" : "编辑")产品</legend>
+    <form method="post" class="form-horizontal">
+    @Html.ValidationSummary()
+    @if (ViewBag.Msg != null)
+    {
+        <div class="success">@Html.Raw(ViewBag.Msg)</div>
+    }
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            分类：</label>
+        <div class="col-sm-10">
+            @Html.Raw(XFramework.Site.PagesAdmin.Models.DropdownHelper.RenaderProductDropdownList("CategoryId", Model.CategoryId))
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            标题：</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.Title, new { placeholder = "产品标题", @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            内容：</label>
+        <div class="col-sm-10">
+            @Html.TextAreaFor(m => m.Content, new { style = "width:100%;" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            产品小图：</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.SImageUrl, new { placeholder = "产品小图", @class = "form-control" })<a
+                href="javascript:openWindow('/Pagesadmin/Home/UploadImage?obj=SImageUrl',400,100,200);">上传图片</a>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            产品大图：</label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.BImageUrl, new { placeholder = "产品小图", @class = "form-control" })<a
+                href="javascript:openWindow('/Pagesadmin/Home/UploadImage?obj=SImageUrl',400,100,200);">上传图片</a>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            属性：</label>
+        <div class="col-sm-10">
+            <div role="tabpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tab-1" aria-controls="tab-1" role="tab"
+                        data-toggle="tab">发布时间</a></li>
+                    <li><a href="#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab">是否删除</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="tab-1">
+                        @Html.TextBoxFor(m => m.PublishDateTime, new { @class = "form-control" })
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="tab-2">
+                        @Html.CheckBoxFor(m => m.IsDeleted)是否删除
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">@(isAdd ? "增加" : "更新")</button>
+        </div>
+    </div>
+    </form>
+</fieldset>

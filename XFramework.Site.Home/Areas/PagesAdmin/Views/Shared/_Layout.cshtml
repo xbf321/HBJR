@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="/Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {  padding-top: 50px;}
+        .sub-header {
+          padding-bottom: 10px;
+          border-bottom: 1px solid #eee;
+        }
+        .navbar-fixed-top {
+          border: 0;
+        }
+        .sidebar {
+            position: fixed;
+            top: 51px;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            display: block;
+            padding: 20px;
+            overflow-x: hidden;
+            overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+            background-color: #f5f5f5;
+            border-right: 1px solid #eee;
+        }
+
+
+        /* Sidebar navigation */
+        .nav-sidebar {
+          margin-right: -21px; /* 20px padding + 1px border */
+          margin-bottom: 20px;
+          margin-left: -20px;
+          border-bottom: 1px solid #ccc;
+        }
+        .nav-sidebar > li > a {
+          padding-right: 20px;
+          padding-left: 20px;
+        }
+        .nav-sidebar > .active > a,
+        .nav-sidebar > .active > a:hover,
+        .nav-sidebar > .active > a:focus {
+          color: #fff;
+          background-color: #428bca;
+        }
+        .main {
+          padding: 20px;
+        }
+        .main .page-header {
+          margin-top: 0;
+        }
+        div[role="tabpanel"] > .tab-content{padding:10px;}
+        select
+        {
+              border-radius: 4px;
+              height: 34px;
+              padding: 6px 12px;
+              font-size: 14px;
+              line-height: 1.42857143;
+              color: #555;
+              background-color: #fff;
+              background-image: none;
+              border: 1px solid #ccc;
+              width: 100%;
+              display: block;
+        }
+        option{height:30px;}
+        .box-10{ height:10px;display:block;}
+        
+        /*Validation*/
+        .field-validation-error{ color: #ff0000; }
+        .field-validation-valid{ display: none; }
+        .input-validation-error{    border: 1px solid #ff0000;    background-color: #ffeeee;}
+        .validation-summary-errors{    font-weight: bold;    color: #ff0000;}
+        .validation-summary-valid{    display: none;}
+
+        .success{font-size: 14px;font-weight: bold;color: #404040;border: 1px solid #ddd;padding: 17px 10px 17px 56px; line-height: 22px;border-color: #4dbf00;background-color: #f0ffe5;margin-bottom:10px;}
+    </style>
+    <script src="/Scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <!--编辑器以及编辑器中本地上传图片-->
+    <script src="/editor/tiny_mce/tiny_mce.js" type="text/javascript"></script>
+    <!--编辑器以及编辑器中本地上传图片-->
+    <script type="text/javascript">
+        var _GLOBAL = {
+            editorId: ''
+        };
+        function insertImage(obj, url) {
+            $('#' + obj).val(url);
+        }
+        function openWindow(g, c, a, b) {
+            var e = (screen.width - c) / 2 - b, f = (screen.height - a) / 2 - b, d = window.open(g, "_blank", "width=" + c + ",height=" + a + ",toolbars=0,resizable=1,left=" + e + ",top=" + f); d.focus() 
+        }
+    </script>
+    @RenderSection("header", false)
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand">管理后台</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/pagesAdmin/account/logout">退出</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/category/list") > 0 ? "active" : "")"><a href="/pagesadmin/category/list?lang=-1">分类列表</a></li>
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/category/add")> 0? "active": "")"><a href="/pagesadmin/category/add">新建分类</a></li>
+                    
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/article/add") > 0 ? "active" : "")"><a href="/pagesadmin/article/add">添加文章</a></li>
+                        <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/article/list") > 0 ? "active" : "")"><a href="/pagesadmin/article/list">文章列表</a></li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/product/add") > 0 ? "active" : "")"><a href="/pagesadmin/product/add">添加产品</a></li>
+                        <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/product/list") > 0 ? "active" : "")"><a href="/pagesadmin/product/list">产品列表</a></li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/notice/list") > 0 ? "active" : "")"><a href="/pagesadmin/notice/list">公告管理</a></li>
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/account/list") > 0 ? "active" : "")"><a href="/pagesadmin/account/list">管理员列表</a></li>
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/account/add") > 0 ? "active" : "")"><a href="/pagesadmin/account/add">添加管理员</a></li>
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/account/setpwd") > 0 ? "active" : "")"><a href="/pagesadmin/account/setpwd">修改密码</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @RenderSection("footer", false)
+
+    <script type="text/javascript">
+        function tinyMCESaveContent(element_id, html, body) {
+            return $(body).html();
+        }
+        function MCECheckIndent(e) {
+            if (e.type == 'keydown' && e.keyCode == 9) {
+                tinyMCE.execCommand('mceInsertContent', false, '　　');
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        $(function () {
+            //设置编辑器
+            tinyMCE.init({
+                theme: "advanced",
+                mode: "exact",
+                width: "100%",
+                height: "500",
+                elements: _GLOBAL.editorId,
+                language: "zh",
+                plugins: "table,insertdatetime,media,xuimg,contextmenu,paste,inlinepopups,attach",
+                // Theme options
+                theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,formatselect,fontselect,fontsizeselect,|,link,unlink,image,|,forecolor,backcolor,",
+                theme_advanced_buttons2: "tablecontrols,|,hr,removeformat,|,media,code,|,xuimg,|,attach,|,bullist,numlist,|,outdent,indent",
+                theme_advanced_buttons3: "",
+                theme_advanced_toolbar_location: "top",
+                theme_advanced_toolbar_align: "left",
+                theme_advanced_path: false,
+                theme_advanced_statusbar_location: "bottom",
+                theme_advanced_resizing: true,
+                theme_advanced_resize_horizontal: false,
+                theme_advanced_resizing_use_cookie: 1,
+                theme_advanced_more_colors: false,
+                theme_advanced_font_sizes: '3,4,5,6,7',
+                save_callback: "tinyMCESaveContent",
+                relative_urls: false,
+                theme_advanced_fonts: '楷体_GB2312=楷体_GB2312;黑体=黑体;隶书=隶书;Times New Roman=Times New Roman;Arial=Arial;',
+                convert_fonts_to_spans: true,
+                remove_trailing_nbsp: true,
+                convert_newlines_to_brs: false,
+                force_br_newlines: false,
+                force_p_newlines: false,
+                remove_linebreaks: false,
+                remove_script_host: false,
+                forced_root_block: "p",
+                paste_auto_cleanup_on_paste: true,
+                extended_valid_elements: "pre[name|class],style",
+                handle_event_callback: "MCECheckIndent",
+                whitespace_elements: "span,pre,script,style,textarea",
+                cleanup: true
+            });
+        });
+    </script>
+</body>
+</html>

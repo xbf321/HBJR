@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "下载管理";
+}
+<fieldset>
+    <legend>下载管理</legend>
+    <table width="100%">
+        <tr>
+            <td align="right"><a href="Add" class="btn-add">添加文件</a></td>
+        </tr>
+    </table>
+    <table width="100%" class="tblist">
+        <tr>
+            <th>Id</th>
+            <th>标题</th>
+            <th>文件类型</th>
+            <th>文件大小</th>
+            <th>删除</th>
+            <th>操作</th>
+        </tr>
+        @foreach(var item in ViewBag.attachList){
+            <tr>
+                <td class="tdcenter" width="5%">@item.Id</td>
+                <td>@item.Title</td>
+                <td class="tdcenter" width="10%">@(item.FileType)</td>
+                <td class="tdcenter" width="10%">@(item.Size)M</td>
+                <td class="tdcenter" width="10%">@Html.Raw(item.IsDeleted ? "<font color=\"red\">已删除</font>" : "否")</td>
+                <td class="tdcenter" width="10%"><a href="add?id=@item.Id">编辑</a></td>
+            </tr>
+        }
+    </table>
+</fieldset>

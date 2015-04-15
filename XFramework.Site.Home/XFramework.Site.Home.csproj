@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EF486BC7-93D2-4515-BAA0-47785D830795}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XFramework.Site</RootNamespace>
+    <AssemblyName>XFramework.Site</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Controleng.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\Controleng.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Goodspeed.Library, Version=1.0.0.20631, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Goodspeed.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data">
+      <HintPath>..\Assemblies\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 3\Assemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages" />
+    <Reference Include="System.Web.Helpers" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Front\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Front\Controllers\ChannelController.cs" />
+    <Compile Include="Areas\Front\Controllers\DownloadController.cs" />
+    <Compile Include="Areas\Front\Controllers\FeedbackController.cs" />
+    <Compile Include="Areas\Front\Controllers\FrontBaseController.cs" />
+    <Compile Include="Areas\Front\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Front\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Front\Controllers\SurveyController.cs" />
+    <Compile Include="Areas\Front\FrontAreaRegistration.cs" />
+    <Compile Include="Areas\Front\Models\XFrontContext.cs" />
+    <Compile Include="Areas\PagesAdmin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\PagesAdmin\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\PagesAdmin\Controllers\AttachController.cs" />
+    <Compile Include="Areas\PagesAdmin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\PagesAdmin\Controllers\FeedbackController.cs" />
+    <Compile Include="Areas\PagesAdmin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\PagesAdmin\Controllers\NoticeController.cs" />
+    <Compile Include="Areas\PagesAdmin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\PagesAdmin\Controllers\UploadController.cs" />
+    <Compile Include="Areas\PagesAdmin\Models\DropdownHelper.cs" />
+    <Compile Include="Areas\PagesAdmin\Models\PagesAdminAuthAttribute.cs" />
+    <Compile Include="Areas\PagesAdmin\Models\PagesAdminContext.cs" />
+    <Compile Include="Areas\PagesAdmin\PagesAdminAreaRegistration.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Notice.xml" />
+    <Content Include="Areas\PagesAdmin\Scripts\swfupload\handlers.js" />
+    <Content Include="Areas\PagesAdmin\Scripts\swfupload\swfupload.js" />
+    <Content Include="Areas\PagesAdmin\Scripts\swfupload\swfupload.swf" />
+    <Content Include="Areas\PagesAdmin\Scripts\swfupload\swfupload_fp9.swf" />
+    <Content Include="Editor\tiny_mce\langs\zh.js" />
+    <Content Include="Editor\tiny_mce\plugins\attach\attach.htm" />
+    <Content Include="Editor\tiny_mce\plugins\attach\editor_plugin.js" />
+    <Content Include="Editor\tiny_mce\plugins\attach\img\zip.gif" />
+    <Content Include="Editor\tiny_mce\plugins\attach\swfupload\handlers.js" />
+    <Content Include="Editor\tiny_mce\plugins\attach\swfupload\swfupload.js" />
+    <Content Include="Editor\tiny_mce\plugins\attach\swfupload\swfupload.swf" />
+    <Content Include="Editor\tiny_mce\plugins\attach\swfupload\swfupload_fp9.swf" />
+    <Content Include="Editor\tiny_mce\plugins\contextmenu\editor_plugin.js" />
+    <Content Include="Editor\tiny_mce\plugins\contextmenu\editor_plugin_src.js" />
+    <Content Include="Editor\tiny_mce\plugins\inlinepopups\editor_plugin.js" />
+    <Content Include="Editor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\alert.gif" />
+    <Content Include="Editor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\button.gif" />
+    <Content Include="Editor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\buttons.gif" />
+    <Content Include="Editor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\confirm.gif" />
+    <Content Include="Editor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\corners.gif" />
+    <Content Include="Editor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\horizontal.gif" />
+    <Content Include="Editor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\img\vertical.gif" />
+    <Content Include="Editor\tiny_mce\plugins\inlinepopups\skins\clearlooks2\window.css" />
+    <Content Include="Editor\tiny_mce\plugins\inlinepopups\template.htm" />
+    <Content Include="Editor\tiny_mce\plugins\insertdatetime\editor_plugin.js" />
+    <Content Include="Editor\tiny_mce\plugins\legacyoutput\editor_plugin.js" />
+    <Content Include="Editor\tiny_mce\plugins\media\css\content.css" />
+    <Content Include="Editor\tiny_mce\plugins\media\css\media.css" />
+    <Content Include="Editor\tiny_mce\plugins\media\editor_plugin.js" />
+    <Content Include="Editor\tiny_mce\plugins\media\img\flash.gif" />
+    <Content Include="Editor\tiny_mce\plugins\media\img\flv_player.swf" />
+    <Content Include="Editor\tiny_mce\plugins\media\img\quicktime.gif" />
+    <Content Include="Editor\tiny_mce\plugins\media\img\realmedia.gif" />
+    <Content Include="Editor\tiny_mce\plugins\media\img\shockwave.gif" />
+    <Content Include="Editor\tiny_mce\plugins\media\img\trans.gif" />
+    <Content Include="Editor\tiny_mce\plugins\media\img\windowsmedia.gif" />
+    <Content Include="Editor\tiny_mce\plugins\media\js\embed.js" />
+    <Content Include="Editor\tiny_mce\plugins\media\js\media.js" />
+    <Content Include="Editor\tiny_mce\plugins\media\langs\en_dlg.js" />
+    <Content Include="Editor\tiny_mce\plugins\media\langs\zh_dlg.js" />
+    <Content Include="Editor\tiny_mce\plugins\media\media.htm" />
+    <Content Include="Editor\tiny_mce\plugins\noneditable\editor_plugin.js" />
+    <Content Include="Editor\tiny_mce\plugins\paste\editor_plugin.js" />
+    <Content Include="Editor\tiny_mce\plugins\paste\editor_plugin_src.js" />
+    <Content Include="Editor\tiny_mce\plugins\paste\js\pastetext.js" />
+    <Content Include="Editor\tiny_mce\plugins\paste\js\pasteword.js" />
+    <Content Include="Editor\tiny_mce\plugins\paste\langs\en_dlg.js" />
+    <Content Include="Editor\tiny_mce\plugins\paste\pastetext.htm" />
+    <Content Include="Editor\tiny_mce\plugins\paste\pasteword.htm" />
+    <Content Include="Editor\tiny_mce\plugins\tabfocus\editor_plugin.js" />
+    <Content Include="Editor\tiny_mce\plugins\table\cell.htm" />
+    <Content Include="Editor\tiny_mce\plugins\table\css\cell.css" />
+    <Content Include="Editor\tiny_mce\plugins\table\css\row.css" />
+    <Content Include="Editor\tiny_mce\plugins\table\css\table.css" />
+    <Content Include="Editor\tiny_mce\plugins\table\editor_plugin.js" />
+    <Content Include="Editor\tiny_mce\plugins\table\js\cell.js" />
+    <Content Include="Editor\tiny_mce\plugins\table\js\merge_cells.js" />
+    <Content Include="Editor\tiny_mce\plugins\table\js\row.js" />
+    <Content Include="Editor\tiny_mce\plugins\table\js\table.js" />
+    <Content Include="Editor\tiny_mce\plugins\table\langs\en_dlg.js" />
+    <Content Include="Editor\tiny_mce\plugins\table\langs\zh_dlg.js" />
+    <Content Include="Editor\tiny_mce\plugins\table\merge_cells.htm" />
+    <Content Include="Editor\tiny_mce\plugins\table\row.htm" />
+    <Content Include="Editor\tiny_mce\plugins\table\table.htm" />
+    <Content Include="Editor\tiny_mce\plugins\xuimg\editor_plugin.js" />
+    <Content Include="Editor\tiny_mce\plugins\xuimg\img\image.gif" />
+    <Content Include="Editor\tiny_mce\plugins\xuimg\jquery-1.4.4.min.js" />
+    <Content Include="Editor\tiny_mce\plugins\xuimg\jquery.ajaxfileupload.js" />
+    <Content Include="Editor\tiny_mce\plugins\xuimg\upload.htm" />
+    <Content Include="Editor\tiny_mce\themes\advanced\color_picker.htm" />
+    <Content Include="Editor\tiny_mce\themes\advanced\editor_template.js" />
+    <Content Include="Editor\tiny_mce\themes\advanced\image.htm" />
+    <Content Include="Editor\tiny_mce\themes\advanced\img\colorpicker.jpg" />
+    <Content Include="Editor\tiny_mce\themes\advanced\img\icons.gif" />
+    <Content Include="Editor\tiny_mce\themes\advanced\js\color_picker.js" />
+    <Content Include="Editor\tiny_mce\themes\advanced\js\image.js" />
+    <Content Include="Editor\tiny_mce\themes\advanced\js\link.js" />
+    <Content Include="Editor\tiny_mce\themes\advanced\js\source_editor.js" />
+    <Content Include="Editor\tiny_mce\themes\advanced\langs\en.js" />
+    <Content Include="Editor\tiny_mce\themes\advanced\langs\en_dlg.js" />
+    <Content Include="Editor\tiny_mce\themes\advanced\langs\zh.js" />
+    <Content Include="Editor\tiny_mce\themes\advanced\langs\zh_dlg.js" />
+    <Content Include="Editor\tiny_mce\themes\advanced\link.htm" />
+    <Content Include="Editor\tiny_mce\themes\advanced\skins\default\content.css" />
+    <Content Include="Editor\tiny_mce\themes\advanced\skins\default\dialog.css" />
+    <Content Include="Editor\tiny_mce\themes\advanced\skins\default\img\buttons.png" />
+    <Content Include="Editor\tiny_mce\themes\advanced\skins\default\img\items.gif" />
+    <Content Include="Editor\tiny_mce\themes\advanced\skins\default\img\menu_arrow.gif" />
+    <Content Include="Editor\tiny_mce\themes\advanced\skins\default\img\menu_check.gif" />
+    <Content Include="Editor\tiny_mce\themes\advanced\skins\default\img\progress.gif" />
+    <Content Include="Editor\tiny_mce\themes\advanced\skins\default\img\tabs.gif" />
+    <Content Include="Editor\tiny_mce\themes\advanced\skins\default\ui.css" />
+    <Content Include="Editor\tiny_mce\themes\advanced\source_editor.htm" />
+    <Content Include="Editor\tiny_mce\tiny_mce.js" />
+    <Content Include="Editor\tiny_mce\tiny_mce_popup.js" />
+    <Content Include="Editor\tiny_mce\utils\editable_selects.js" />
+    <Content Include="Editor\tiny_mce\utils\form_utils.js" />
+    <Content Include="Editor\tiny_mce\utils\mctabs.js" />
+    <Content Include="Editor\tiny_mce\utils\validate.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\btn-home-bg.gif" />
+    <Content Include="Images\dongt.gif" />
+    <Content Include="Images\dongt_on.gif" />
+    <Content Include="Images\elect_downbtn.jpg" />
+    <Content Include="Images\footer_bg.gif" />
+    <Content Include="Images\list_ico.gif" />
+    <Content Include="Images\list_linex.gif" />
+    <Content Include="Images\liuy_btn.jpg" />
+    <Content Include="Images\logo.jpg" />
+    <Content Include="Images\menu_bg.gif" />
+    <Content Include="Images\menu_line.gif" />
+    <Content Include="Images\news_bg.gif" />
+    <Content Include="Images\new_ico.gif" />
+    <Content Include="Images\pagesadmin\content.gif" />
+    <Content Include="Images\pagesadmin\login_btm_left.gif" />
+    <Content Include="Images\pagesadmin\login_btm_mid.gif" />
+    <Content Include="Images\pagesadmin\login_btm_right.gif" />
+    <Content Include="Images\pagesadmin\login_mid.gif" />
+    <Content Include="Images\pagesadmin\login_title.gif" />
+    <Content Include="Images\pagesadmin\main_banner_bg.gif" />
+    <Content Include="Images\pagesadmin\main_footer_bg.gif" />
+    <Content Include="Images\pagesadmin\main_place_bg.gif" />
+    <Content Include="Images\pagesadmin\main_zhedie.gif" />
+    <Content Include="Images\pagesadmin\nav_sprites.png" />
+    <Content Include="Images\pagesadmin\pic_sprites.png" />
+    <Content Include="Images\products_title.jpg" />
+    <Content Include="Images\results_bg.gif" />
+    <Content Include="Images\results_title.gif" />
+    <Content Include="Images\rows_bg.gif" />
+    <Content Include="Images\r_ico.gif" />
+    <Content Include="Images\search_btn.gif" />
+    <Content Include="Images\sort_bg.gif" />
+    <Content Include="Images\sort_ico.gif" />
+    <Content Include="Images\titleico.jpg" />
+    <Content Include="Images\top_bar.jpg" />
+    <Content Include="Images\top_bg.gif" />
+    <Content Include="Images\tous_btn.jpg" />
+    <Content Include="Images\wenj_btn.jpg" />
+    <Content Include="Images\xiaz_btn.jpg" />
+    <Content Include="Language\en.xml" />
+    <Content Include="Language\zh_cn.xml" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.slides.js" />
+    <Content Include="Scripts\FlashFocus.swf" />
+    <Content Include="Scripts\swfupload\handlers.js" />
+    <Content Include="Scripts\swfupload\swfupload.js" />
+    <Content Include="Scripts\swfupload\swfupload.swf" />
+    <Content Include="Scripts\swfupload\swfupload_fp9.swf" />
+    <Content Include="Styles\bootstrap.min.css" />
+    <Content Include="Styles\site.css" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\Front\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Front\Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Category\Add.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Category\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Home\Index_zh_cn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Home\Index_en.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Shared\_ChannelLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Channel\Show.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Template\ShowSingleCategoryInfo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Template\None.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Article\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Article\Add.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Template\ArticleList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Article\Show.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Shared\UploadImage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Notice\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Home\Test.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Feedback\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Feedback\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Attach\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Attach\Add.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Download\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Shared\_SurveyLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Feedback\Advise.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Account\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Account\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Account\Add.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Account\SetPwd.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Home\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XFramework.Core\XFramework.Core.csproj">
+      <Project>{B292C7B4-B1BE-48EB-9F1F-5E51F0721BED}</Project>
+      <Name>XFramework.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Product\Add.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\PagesAdmin\Views\Product\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Product\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Setting.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Front\Views\Product\Detail.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>31479</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

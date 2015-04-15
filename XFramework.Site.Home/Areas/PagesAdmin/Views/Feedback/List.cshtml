@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "在线留言列表";
+}
+<fieldset>
+    <legend>在线留言列表</legend>
+    @foreach (var item in ViewBag.List)
+    { <table width="100%">
+            <tr>
+                <th width="8%" align="right">
+                    标题：
+                </th>
+                <td align="left">@item.Title【@item.FeedbackType】
+                </td>
+            </tr>
+            <tr>
+                <th align="right">
+                    内容：
+                </th>
+                <td align="left">@item.Content
+                </td>
+            </tr>
+            <tr>
+                <th>
+                </th>
+                <td>
+                    姓名：@item.Realname,邮箱：@item.Email,电话：@item.Phone,发表时间：@item.CreateDateTime
+                </td>
+            </tr>
+        </table>
+        <hr />
+    }
+    @Html.Raw(XFramework.Common.PagerBarHelper.Render(ViewBag.List.PageIndex, ViewBag.List.PageSize, ViewBag.List.TotalItemCount, new { @class = "pagerbar" }))
+</fieldset>

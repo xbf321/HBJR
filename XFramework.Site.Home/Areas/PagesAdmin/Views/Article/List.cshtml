@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "文章管理";
+    var articleList = ViewBag.ArticleList;
+    int catId = Controleng.Common.CECRequest.GetQueryInt("cid",0);
+}
+<fieldset>
+    <legend>文章管理</legend>
+    <div class="pull-left">
+        <div class="row" style="width:600px;">
+          <div class="col-md-11">@Html.Raw(XFramework.Site.PagesAdmin.Models.DropdownHelper.RenderCategoryListWithOptGroup("CategoryId", catId))</div>
+          <div class="col-md-1"><input type="button" class="btn btn-success" value="查询" id="btnSearch" /></div>
+        </div>
+    </div>
+    <div class="pull-right"><a href="add" class="btn btn-primary btn-add">添加产品</a></div>
+    <div class="clearfix"></div>
+    <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>
+                序号
+            </th>
+            <th>
+                标题
+            </th>
+            <th>
+                发布时间
+            </th>
+            <th>
+                删除
+            </th>
+            <th>置顶</th>
+            <th>
+                操作
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in articleList)
+        {
+            <tr>
+                <td>@item.Id
+                </td>
+                <td>@Html.Raw(item.IsDeleted ? "<span style=\"text-decoration: line-through;\">" + item.Title + "</span>" : item.Title)
+                </td>
+                <td>@item.PublishDateTime.ToString("yyyy-MM-dd")
+                </td>
+                <td>@Html.Raw(item.IsDeleted ? "<font color=\"red\">已删除</font>" : "否")
+                </td>
+                <td>@Html.Raw(item.IsTop ? "<font color=\"red\">置顶</font>" : "否")</td>
+                <td>
+                    <a href="add?id=@(item.Id)" class="edit">编辑</a>
+                </td>
+            </tr>
+        }            
+        </tbody>
+    </table>
+    </div>
+    @Html.Raw(XFramework.Common.PagerBarHelper.Render(articleList.PageIndex, articleList.PageSize, articleList.TotalItemCount, new { @class = "pagerbar" }))
+</fieldset>
+@section footer{
+    <script type="text/javascript">
+        $(function () {
+            $('#btnSearch').click(function () {
+                var cid = $('#CategoryId').val();
+                window.location.href = '?cid=' + cid;
+            });
+        });
+    </script>
+}

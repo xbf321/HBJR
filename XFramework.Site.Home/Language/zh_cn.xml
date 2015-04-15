@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <item key="product-category-root-id">4</item>
+    <item key="site-top-logo-link-text"><![CDATA[<a href="/" title="机械发展科技股份有限公司--创新、优质、用户满意"><img src="/images/top_bar.jpg" alt="机械发展科技股份有限公司--创新、优质、用户满意" /></a>]]></item>
+    <item key="current-text">您所在的位置</item>
+    <item key="channel-sub-nav-home-text">首页</item>
+    <item key="article-publish-date-text">发布时间</item>
+    <item key="more-text">更多</item>
+    <item key="site-top-nav-text">
+        <![CDATA[<a href="/en">English</a> | <a href="javascript:void(0);" onclick="bookmark('河北九荣贸易有限公司','http://www.mtd.com.cn');return false;">加入收藏</a>]]>
+    </item>
+    <item key="footer-text">
+        <![CDATA[<p class="footer_logo"><img src="/images/logo.jpg" /></p><p class="footer_info">Copyright 版权所有：机科发展科技股份有限公司<br />地址：北京市海淀区首体南路2号<br />备案号：冀ICP备15005389号</p><p class="copright_map"><a href="/channel/92.html">版权声明</a> | <a href="/channel/93.html">网站地图</a> | <a href="/channel/94.html">联系我们</a></p>]]>
+    </item>
+    <item key="footer-friendlink-text">
+        <![CDATA[]]></item>
+</root>

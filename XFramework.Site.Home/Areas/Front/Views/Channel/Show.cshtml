@@ -1,0 +1,9 @@
+﻿@using XFramework.Model;
+@{
+    Layout = "../Shared/_ChannelLayout.cshtml";
+    
+    var currentCatInfo = ViewBag.CurrentCategoryInfo;
+    ViewBag.Title = currentCatInfo.Name;    
+    TemplateType templateType = (TemplateType)Enum.Parse(typeof(TemplateType), currentCatInfo.TemplateType.ToString());
+}
+@{Html.RenderPartial(string.Format("../Template/{0}", templateType));}
