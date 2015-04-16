@@ -11,24 +11,26 @@
         <div class="success">@Html.Raw(ViewBag.Msg)</div>
     }
     <form method="post" action="" class="form-horizontal">
-      <div class="form-group">
-        <label  class="col-sm-1 control-label">Email：</label>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">
+            Email：</label>
         <div class="col-sm-11">
-            @Html.TextBoxFor(m => m.UserName, new { placeholder = "用户Email", @class="form-control"})
+            @Html.TextBoxFor(m => m.UserName, new { placeholder = "用户Email", @class = "form-control" })
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-1 control-label">密码：</label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">
+            密码：</label>
         <div class="col-sm-11">
-           @Html.PasswordFor(m => m.UserPwd, new { placeholder = "密码", @class="form-control"})
-           注：密码至少六位字符
+            @Html.PasswordFor(m => m.UserPwd, new { placeholder = "密码", @class = "form-control" })
+            注：密码至少六位字符
         </div>
-      </div>
-       
-      <div class="form-group">
+    </div>
+    <div class="form-group">
         <div class="col-sm-offset-1 col-sm-11">
-          <button type="submit" class="btn btn-primary">保存</button>
+            <button type="submit" class="btn btn-primary">
+                保存</button>
         </div>
-      </div>
+    </div>
     </form>
 </fieldset>

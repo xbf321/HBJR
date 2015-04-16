@@ -9,70 +9,77 @@
 }
 <fieldset>
     <legend>公告管理</legend>
-    <div class="pull-right"><a href="?" class="btn btn-primary btn-add">新建公告</a></div>
-    <div class="clearfix"></div>
-    <div class="box-10"></div>
+    <div class="pull-right">
+        <a href="?" class="btn btn-primary btn-add">新建公告</a></div>
+    <div class="clearfix">
+    </div>
+    <div class="box-10">
+    </div>
     @Html.ValidationSummary()
     <form method="post" class="form-horizontal">
-      <div class="form-group">
-        <label  class="col-sm-1 control-label">标题：</label>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">
+            标题：</label>
         <div class="col-sm-11">
-            @Html.TextBox("title", title,new { placeholder = "标题", @class="form-control"})
+            @Html.TextBox("title", title, new { placeholder = "标题", @class = "form-control" })
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-1 control-label">链接：</label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">
+            链接：</label>
         <div class="col-sm-11">
-           @Html.TextBox("url", url, new { placeholder = "链接地址", @class = "form-control" })
+            @Html.TextBox("url", url, new { placeholder = "链接地址", @class = "form-control" })
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-1 control-label">排序：</label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">
+            排序：</label>
         <div class="col-sm-11">
-          @Html.TextBox("sort", sort, new { placeholder = "排序", @class = "form-control" })
+            @Html.TextBox("sort", sort, new { placeholder = "排序", @class = "form-control" })
         </div>
-      </div>       
-      <div class="form-group">
+    </div>
+    <div class="form-group">
         <div class="col-sm-offset-1 col-sm-11">
-          <button type="submit" class="btn btn-primary">保存</button>
+            <button type="submit" class="btn btn-primary">
+                保存</button>
         </div>
-      </div>
+    </div>
     </form>
-     <div class="table-responsive">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>
-                标题
-            </th>
-            <th>
-                链接
-            </th>
-            <th>
-                排序
-            </th>
-            <th>
-                操作
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in ViewBag.NoticeList)
-            {
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>@item.Item1
-                    </td>
-                    <td>@item.Item2
-                    </td>
-                    <td>@item.Item3
-                    </td>
-                    <td>
-                        <a href="?guid=@(item.Item4)">编辑</a>|<a href="javascript:void(0);" onclick="del('@(item.Item4)');">删除</a>
-                    </td>
+                    <th>
+                        标题
+                    </th>
+                    <th>
+                        链接
+                    </th>
+                    <th>
+                        排序
+                    </th>
+                    <th>
+                        操作
+                    </th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.NoticeList)
+                {
+                    <tr>
+                        <td>@item.Item1
+                        </td>
+                        <td>@item.Item2
+                        </td>
+                        <td>@item.Item3
+                        </td>
+                        <td>
+                            <a href="?guid=@(item.Item4)">编辑</a>|<a href="javascript:void(0);" onclick="del('@(item.Item4)');">删除</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </fieldset>
 <script type="text/javascript">

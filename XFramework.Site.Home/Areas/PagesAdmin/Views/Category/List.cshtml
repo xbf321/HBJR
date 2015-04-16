@@ -4,38 +4,60 @@
 }
 @section header{
     <style type="text/css">
-        #catTree ul{padding-left:15px; list-style:disc;}
-        #catTree ul li{ line-height:20px;}
-        ul,li{list-style:none;}
-        li{line-height:15px;}
+        ul, li
+        {
+            list-style: none;
+        }
+        #catTree ul
+        {
+            padding-left: 15px;
+            list-style: disc;
+        }
+        #catTree ul li
+        {
+            line-height: 25px;
+            height:25px;
+        }
+        
     </style>
 }
 <fieldset>
     <legend>类别列表</legend>
-    <table>
-        <tr>
-            <th>请选择语言：</th>
-            <td><select id="ddlLang">
-                <option value="0">==请选择==</option>
-                <option value="-1">中文</option>
-                <option value="-2">英文</option>
-            </select>&nbsp;&nbsp;<a href="add">添加类别</a></td>
-        </tr>
-        <tr>
-            <td id="catTree" colspan="2"></td>
-        </tr>
-    </table>
+    <div class="row" style="width: 600px;">
+        <div class="col-md-11"><select id="ddlLang">
+                    <option value="0">==请选择语言==</option>
+                    <option value="-1">中文</option>
+                    <option value="-2">英文</option>
+                </select></div>
+        <div class="col-md-1">
+            <a href="javascript:void(0);" class="btn btn-success btn-add" >添加类别</a>
+        </div>
+    </div>
+    <div class="box-10"></div>
+    <div id="catTree"></div>
 </fieldset>
 @section footer{
     <script type="text/javascript">
-        var lang = @(Controleng.Common.CECRequest.GetQueryInt("lang", 0));
+        var lang = @(Controleng.Common.CECRequest.GetQueryInt("lang", 0)),
+            ddlLangObj = $('#ddlLang');
+
         $(function(){
-            $('#ddlLang').on('change',function(){
+            ddlLangObj.on('change',function(){
                 loadTree(this.value);
             });
 
             $('#ddlLang option').each(function(index,item){
-                
+                var current = $(item);
+                if(lang == current.val()){
+                    current.prop('selected',true);
+                }
+            });
+
+            $('.btn-add').click(function(){
+                var selectValue = ddlLangObj.val();
+                if(selectValue != "0"){
+                    window.location.href = 'add?id='+selectValue;
+                }                
             });
 
             loadTree(lang);
@@ -53,4 +75,3 @@
         }
     </script>
 }
-

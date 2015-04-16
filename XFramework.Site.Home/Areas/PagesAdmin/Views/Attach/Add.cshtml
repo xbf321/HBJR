@@ -30,9 +30,13 @@
                 文件地址：
             </th>
             <td>@Html.TextBoxFor(m => m.Url, new { style = "width:300px" })<br />
-                <span class="swfuploadWrapper"><span id="swfuploadPlaceholder"></span></span>
-                <span id="tempFileName"></span><br />
-                <span><input type="button" value="开始上传" onclick="customerUpload();" id="btnStartUpload" />&nbsp;&nbsp;<input type="button" id="btnUploadCancle" value="取消上传" onclick="swfu.cancelQueue();"  disabled="disabled" /></span><span id="processbar"></span>
+                <span class="swfuploadWrapper"><span id="swfuploadPlaceholder"></span></span><span
+                    id="tempFileName"></span>
+                <br />
+                <span>
+                    <input type="button" value="开始上传" onclick="customerUpload();" id="btnStartUpload" />&nbsp;&nbsp;<input
+                        type="button" id="btnUploadCancle" value="取消上传" onclick="swfu.cancelQueue();"
+                        disabled="disabled" /></span><span id="processbar"></span>
                 <br />
                 <font color="red">第一步点击“本地浏览文件”按钮；第二步点击“开始上传”按钮</font>
             </td>
@@ -71,48 +75,48 @@
 @section footer{
     <script type="text/javascript">
         var swfu = new SWFUpload({
-                // Backend settings
-                upload_url: "/Pagesadmin/Upload/SWF",
-                file_post_name: "attachFile",
+            // Backend settings
+            upload_url: "/Pagesadmin/Upload/SWF",
+            file_post_name: "attachFile",
 
-                // Flash file settings
-                file_size_limit: "50 MB",
-                file_types: "*.*", 		// or you could use something like: "*.doc;*.wpd;*.pdf",
-                file_types_description: "All Files",
-                file_upload_limit: 0,
-                file_queue_limit: 1,
+            // Flash file settings
+            file_size_limit: "50 MB",
+            file_types: "*.*",     // or you could use something like: "*.doc;*.wpd;*.pdf",
+            file_types_description: "All Files",
+            file_upload_limit: 0,
+            file_queue_limit: 1,
 
-                custom_settings: {
-                    cancelButtonId: "btnUploadCancle",
-                    startButtionId: "btnStartUpload"
-                },
-                swfupload_preload_handler: preLoad,
-                swfupload_load_failed_handler: loadFailed,
-                file_dialog_complete_handler: fileDialogComplete,
-                file_queued_handler: fileQueued,
-                upload_start_handler: uploadStart,
-                upload_progress_handler: uploadProgress,
-                upload_error_handler: uploadError,
-                upload_success_handler: uploadSuccess,
-                upload_complete_handler: uploadComplete,
+            custom_settings: {
+                cancelButtonId: "btnUploadCancle",
+                startButtionId: "btnStartUpload"
+            },
+            swfupload_preload_handler: preLoad,
+            swfupload_load_failed_handler: loadFailed,
+            file_dialog_complete_handler: fileDialogComplete,
+            file_queued_handler: fileQueued,
+            upload_start_handler: uploadStart,
+            upload_progress_handler: uploadProgress,
+            upload_error_handler: uploadError,
+            upload_success_handler: uploadSuccess,
+            upload_complete_handler: uploadComplete,
 
-                // Button Settings
-                button_text: '<span class="redText">[本地浏览文件]</span>',
-                button_text_style: ".redText { color: #FF0000; }",
-                button_placeholder_id: "swfuploadPlaceholder",
-                button_width: 90,
-                button_height: 20,
-                button_text_left_padding: 2,
-                button_cursor: SWFUpload.CURSOR.HAND,
+            // Button Settings
+            button_text: '<span class="redText">[本地浏览文件]</span>',
+            button_text_style: ".redText { color: #FF0000; }",
+            button_placeholder_id: "swfuploadPlaceholder",
+            button_width: 90,
+            button_height: 20,
+            button_text_left_padding: 2,
+            button_cursor: SWFUpload.CURSOR.HAND,
 
-                // Flash Settings
-                flash_url: "/Scripts/swfupload/swfupload.swf",
-                flash9_url: "/Scripts/swfupload/swfupload_fp9.swf",
+            // Flash Settings
+            flash_url: "/Scripts/swfupload/swfupload.swf",
+            flash9_url: "/Scripts/swfupload/swfupload_fp9.swf",
 
-                // Debug settings
-                debug: false
-            });
-       function uploadSuccess(file, serverData) {
+            // Debug settings
+            debug: false
+        });
+        function uploadSuccess(file, serverData) {
             try {
                 document.getElementById("Url").value = serverData;
             } catch (ex) {

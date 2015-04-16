@@ -2,49 +2,63 @@
     Layout = "../Shared/_Layout.cshtml";
     ViewBag.Title = "产品列表";
     var productList = ViewBag.ProductList;
-    int catId = Controleng.Common.CECRequest.GetQueryInt("cid",0);
+    int catId = Controleng.Common.CECRequest.GetQueryInt("cid", 0);
 }
 <fieldset>
     <legend>产品列表</legend>
     <div class="pull-left">
-        <div class="row" style="width:600px;">
-          <div class="col-md-11">@Html.Raw(XFramework.Site.PagesAdmin.Models.DropdownHelper.RenaderProductDropdownList("CategoryId", catId))</div>
-          <div class="col-md-1"><input type="button" class="btn btn-success" value="查询" id="btnSearch" /></div>
+        <div class="row" style="width: 600px;">
+            <div class="col-md-11">@Html.Raw(XFramework.Site.PagesAdmin.Models.DropdownHelper.RenaderProductDropdownList("CategoryId", catId))</div>
+            <div class="col-md-1">
+                <input type="button" class="btn btn-success" value="查询" id="btnSearch" /></div>
         </div>
     </div>
-    <div class="pull-right"><a href="add" class="btn btn-primary btn-add">添加产品</a></div>
-    <div class="clearfix"></div>
-    <div class="box-10"></div>
+    <div class="pull-right">
+        <a href="add" class="btn btn-primary btn-add">添加产品</a></div>
+    <div class="clearfix">
+    </div>
+    <div class="box-10">
+    </div>
     <div class="table-responsive">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>序号</th>
-            <th>标题</th>
-            <th>发布时间</th>
-            <th>是否删除</th>
-            <th>操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in productList)
-        {
-            <tr>
-                <td>@item.Id
-                </td>
-                <td>@Html.Raw(item.IsDeleted ? "<span style=\"text-decoration: line-through;\">" + item.Title + "</span>" : item.Title)
-                </td>
-                <td>@item.CreateDateTime.ToString("yyyy-MM-dd")
-                </td>
-                <td class="tdcenter">@Html.Raw(item.IsDeleted ? "<font color=\"red\">已删除</font>" : "否")
-                </td>
-                <td class="tdcenter">
-                    <a href="add?id=@(item.Id)" class="edit">编辑</a>
-                </td>
-            </tr>
-        }                
-        </tbody>
-    </table>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        序号
+                    </th>
+                    <th>
+                        标题
+                    </th>
+                    <th>
+                        发布时间
+                    </th>
+                    <th>
+                        是否删除
+                    </th>
+                    <th>
+                        操作
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in productList)
+                {
+                    <tr>
+                        <td>@item.Id
+                        </td>
+                        <td>@Html.Raw(item.IsDeleted ? "<span style=\"text-decoration: line-through;\">" + item.Title + "</span>" : item.Title)
+                        </td>
+                        <td>@item.CreateDateTime.ToString("yyyy-MM-dd")
+                        </td>
+                        <td class="tdcenter">@Html.Raw(item.IsDeleted ? "<font color=\"red\">已删除</font>" : "否")
+                        </td>
+                        <td class="tdcenter">
+                            <a href="add?id=@(item.Id)" class="edit">编辑</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
     @Html.Raw(XFramework.Common.PagerBarHelper.Render(productList.PageIndex, productList.PageSize, productList.TotalItemCount, new { @class = "pagerbar" }))
 </fieldset>

@@ -4,15 +4,21 @@
     <title>@ViewBag.Title</title>
     <link href="/Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <style>
-        body {  padding-top: 50px;}
-        .sub-header {
-          padding-bottom: 10px;
-          border-bottom: 1px solid #eee;
+        body
+        {
+            padding-top: 50px;
         }
-        .navbar-fixed-top {
-          border: 0;
+        .sub-header
+        {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
         }
-        .sidebar {
+        .navbar-fixed-top
+        {
+            border: 0;
+        }
+        .sidebar
+        {
             position: fixed;
             top: 51px;
             bottom: 0;
@@ -25,57 +31,98 @@
             background-color: #f5f5f5;
             border-right: 1px solid #eee;
         }
-
-
+        
+        
         /* Sidebar navigation */
-        .nav-sidebar {
-          margin-right: -21px; /* 20px padding + 1px border */
-          margin-bottom: 20px;
-          margin-left: -20px;
-          border-bottom: 1px solid #ccc;
+        .nav-sidebar
+        {
+            margin-right: -21px; /* 20px padding + 1px border */
+            margin-bottom: 20px;
+            margin-left: -20px;
+            border-bottom: 1px solid #ccc;
         }
-        .nav-sidebar > li > a {
-          padding-right: 20px;
-          padding-left: 20px;
+        .nav-sidebar > li > a
+        {
+            padding-right: 20px;
+            padding-left: 20px;
         }
-        .nav-sidebar > .active > a,
-        .nav-sidebar > .active > a:hover,
-        .nav-sidebar > .active > a:focus {
-          color: #fff;
-          background-color: #428bca;
+        .nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus
+        {
+            color: #fff;
+            background-color: #428bca;
         }
-        .main {
-          padding: 20px;
+        .main
+        {
+            padding: 20px;
         }
-        .main .page-header {
-          margin-top: 0;
+        .main .page-header
+        {
+            margin-top: 0;
         }
-        div[role="tabpanel"] > .tab-content{padding:10px;}
+        div[role="tabpanel"] > .tab-content
+        {
+            padding: 10px;
+        }
         select
         {
-              border-radius: 4px;
-              height: 34px;
-              padding: 6px 12px;
-              font-size: 14px;
-              line-height: 1.42857143;
-              color: #555;
-              background-color: #fff;
-              background-image: none;
-              border: 1px solid #ccc;
-              width: 100%;
-              display: block;
+            border-radius: 4px;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            width: 100%;
+            display: block;
         }
-        option{height:30px;}
-        .box-10{ height:10px;display:block;}
+        option
+        {
+            height: 30px;
+        }
+        .box-10
+        {
+            height: 10px;
+            display: block;
+        }
         
         /*Validation*/
-        .field-validation-error{ color: #ff0000; }
-        .field-validation-valid{ display: none; }
-        .input-validation-error{    border: 1px solid #ff0000;    background-color: #ffeeee;}
-        .validation-summary-errors{    font-weight: bold;    color: #ff0000;}
-        .validation-summary-valid{    display: none;}
-
-        .success{font-size: 14px;font-weight: bold;color: #404040;border: 1px solid #ddd;padding: 17px 10px 17px 56px; line-height: 22px;border-color: #4dbf00;background-color: #f0ffe5;margin-bottom:10px;}
+        .field-validation-error
+        {
+            color: #ff0000;
+        }
+        .field-validation-valid
+        {
+            display: none;
+        }
+        .input-validation-error
+        {
+            border: 1px solid #ff0000;
+            background-color: #ffeeee;
+        }
+        .validation-summary-errors
+        {
+            font-weight: bold;
+            color: #ff0000;
+        }
+        .validation-summary-valid
+        {
+            display: none;
+        }
+        
+        .success
+        {
+            font-size: 14px;
+            font-weight: bold;
+            color: #404040;
+            border: 1px solid #ddd;
+            padding: 17px 10px 17px 56px;
+            line-height: 22px;
+            border-color: #4dbf00;
+            background-color: #f0ffe5;
+            margin-bottom: 10px;
+        }
     </style>
     <script src="/Scripts/jquery.min.js" type="text/javascript"></script>
     <script src="/Scripts/bootstrap.min.js" type="text/javascript"></script>
@@ -90,7 +137,7 @@
             $('#' + obj).val(url);
         }
         function openWindow(g, c, a, b) {
-            var e = (screen.width - c) / 2 - b, f = (screen.height - a) / 2 - b, d = window.open(g, "_blank", "width=" + c + ",height=" + a + ",toolbars=0,resizable=1,left=" + e + ",top=" + f); d.focus() 
+            var e = (screen.width - c) / 2 - b, f = (screen.height - a) / 2 - b, d = window.open(g, "_blank", "width=" + c + ",height=" + a + ",toolbars=0,resizable=1,left=" + e + ",top=" + f); d.focus()
         }
     </script>
     @RenderSection("header", false)
@@ -103,6 +150,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="/pagesadmin/account/list">管理员列表</a></li>
+            <li><a href="/pagesadmin/account/setpwd">修改密码</a></li>
             <li><a href="/pagesAdmin/account/logout">退出</a></li>
           </ul>
         </div>
@@ -112,23 +161,26 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/category/list") > 0 ? "active" : "")"><a href="/pagesadmin/category/list?lang=-1">分类列表</a></li>
-                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/category/add")> 0? "active": "")"><a href="/pagesadmin/category/add">新建分类</a></li>
-                    
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/category/list") > 0 ? "active" : "")">
+                        <a href="/pagesadmin/category/list?lang=-1">分类列表</a></li>
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/category/add") > 0 ? "active" : "")">
+                        <a href="/pagesadmin/category/add">新建分类</a></li>
                 </ul>
                 <ul class="nav nav-sidebar">
-                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/article/add") > 0 ? "active" : "")"><a href="/pagesadmin/article/add">添加文章</a></li>
-                        <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/article/list") > 0 ? "active" : "")"><a href="/pagesadmin/article/list">文章列表</a></li>
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/article/add") > 0 ? "active" : "")">
+                        <a href="/pagesadmin/article/add">添加文章</a></li>
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/article/list") > 0 ? "active" : "")">
+                        <a href="/pagesadmin/article/list">文章列表</a></li>
                 </ul>
                 <ul class="nav nav-sidebar">
-                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/product/add") > 0 ? "active" : "")"><a href="/pagesadmin/product/add">添加产品</a></li>
-                        <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/product/list") > 0 ? "active" : "")"><a href="/pagesadmin/product/list">产品列表</a></li>
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/product/add") > 0 ? "active" : "")">
+                        <a href="/pagesadmin/product/add">添加产品</a></li>
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/product/list") > 0 ? "active" : "")">
+                        <a href="/pagesadmin/product/list">产品列表</a></li>
                 </ul>
                 <ul class="nav nav-sidebar">
-                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/notice/list") > 0 ? "active" : "")"><a href="/pagesadmin/notice/list">公告管理</a></li>
-                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/account/list") > 0 ? "active" : "")"><a href="/pagesadmin/account/list">管理员列表</a></li>
-                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/account/add") > 0 ? "active" : "")"><a href="/pagesadmin/account/add">添加管理员</a></li>
-                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/account/setpwd") > 0 ? "active" : "")"><a href="/pagesadmin/account/setpwd">修改密码</a></li>
+                    <li class="@(Request.Url.ToString().ToLower().IndexOf("/pagesadmin/notice/list") > 0 ? "active" : "")">
+                        <a href="/pagesadmin/notice/list">公告管理</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -137,7 +189,6 @@
         </div>
     </div>
     @RenderSection("footer", false)
-
     <script type="text/javascript">
         function tinyMCESaveContent(element_id, html, body) {
             return $(body).html();

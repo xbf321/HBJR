@@ -12,88 +12,92 @@
 <fieldset>
     <legend>@(isAdd ? "添加" : "编辑")分类</legend>
     <form method="post" class="form-horizontal">
-        @Html.ValidationSummary()
-        @if (ViewBag.Msg != null)
-        {
-            <div class="success">@Html.Raw(ViewBag.Msg)</div>
-        }
-      <div class="form-group">
-        <label for="inputEmail3" class="col-sm-1 control-label">分类：</label>
+    @Html.ValidationSummary()
+    @if (ViewBag.Msg != null)
+    {
+        <div class="success">@Html.Raw(ViewBag.Msg)</div>
+    }
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-1 control-label">
+            分类：</label>
         <div class="col-sm-10">
-        @Html.Raw(XFramework.Site.PagesAdmin.Models.DropdownHelper.RenderCategoryList("ddlCat", Model.ParentId == 0 ? (int)Model.Language : Model.ParentId))
+            @Html.Raw(XFramework.Site.PagesAdmin.Models.DropdownHelper.RenderCategoryList("ddlCat", Model.ParentId == 0 ? (int)Model.Language : Model.ParentId))
         </div>
-      </div>
-      <div class="form-group">
-        <label  class="col-sm-1 control-label">名称：</label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">
+            名称：</label>
         <div class="col-sm-10">
-            @Html.TextBoxFor(m => m.Name, new { placeholder = "分类名称", @class="form-control"})
+            @Html.TextBoxFor(m => m.Name, new { placeholder = "分类名称", @class = "form-control" })
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-1 control-label">描述：</label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">
+            描述：</label>
         <div class="col-sm-10">
-           @Html.TextAreaFor(m => m.Introduction, new { style = "width:100%;" })
+            @Html.TextAreaFor(m => m.Introduction, new { style = "width:100%;" })
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-1 control-label">模板：</label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">
+            模板：</label>
         <div class="col-sm-10">
             @Html.Raw(XFramework.Site.PagesAdmin.Models.DropdownHelper.RenderTemplatesDropdownList("TemplateType", Model.TemplateType.ToString()))
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-1 control-label">属性：</label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">
+            属性：</label>
         <div class="col-sm-10">
             <div role="tabpanel">
-
-              <!-- Nav tabs -->
-              <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active">
-                    <a href="#sort" aria-controls="sort" role="tab" data-toggle="tab">排序</a></li>
-                <li role="presentation">
-                    <a href="#alias" aria-controls="alias" role="tab" data-toggle="tab">英文别名</a></li>
-                <li role="presentation">
-                    <a href="#link" aria-controls="link" role="tab" data-toggle="tab">快速链接</a></li>
-                <li role="presentation">
-                    <a href="#logo" aria-controls="logo" role="tab" data-toggle="tab">类别图片</a></li>
-                <li role="presentation">
-                    <a href="#banner" aria-controls="banner" role="tab" data-toggle="tab">Banner图片</a></li>
-              </ul>
-
-              <!-- Tab panes -->
-              <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="sort">
-                    @Html.TextBoxFor(m => m.Sort, new { @class = "form-control" })<span class="tip">数值越小，位置越靠前</span>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#sort" aria-controls="sort" role="tab"
+                        data-toggle="tab">排序</a></li>
+                    <li role="presentation"><a href="#alias" aria-controls="alias" role="tab" data-toggle="tab">
+                        英文别名</a></li>
+                    <li role="presentation"><a href="#link" aria-controls="link" role="tab" data-toggle="tab">
+                        快速链接</a></li>
+                    <li role="presentation"><a href="#logo" aria-controls="logo" role="tab" data-toggle="tab">
+                        类别图片</a></li>
+                    <li role="presentation"><a href="#banner" aria-controls="banner" role="tab" data-toggle="tab">
+                        Banner图片</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="sort">
+                        @Html.TextBoxFor(m => m.Sort, new { @class = "form-control" })<span class="tip">数值越小，位置越靠前</span>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="alias">
+                        @Html.TextBoxFor(m => m.Alias, new { @class = "form-control", placeholder = "别名不能出现“/”或空格，如果有多个单词，用“-”隔开" })
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="link">
+                        @Html.TextBoxFor(m => m.LinkUrl, new { @class = "form-control", placeholder = "快速连接" })
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="logo">
+                        @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })&nbsp;&nbsp;<a href="javascript:openWindow('/Pagesadmin/Home/UploadImage?obj=ImageUrl',400,100,200);">上传图片</a>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="banner">
+                        @Html.TextBoxFor(m => m.BannerAdImageUrl, new { @class = "form-control" })<span class="tip">只针对根分类有用</span><a
+                            href="javascript:openWindow('/Pagesadmin/Home/UploadImage?obj=BannerAdImageUrl',400,100,200);">上传图片</a>
+                    </div>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="alias">
-                    @Html.TextBoxFor(m => m.Alias, new { @class = "form-control", placeholder = "别名不能出现“/”或空格，如果有多个单词，用“-”隔开" })
-                </div>
-                <div role="tabpanel" class="tab-pane" id="link">
-                    @Html.TextBoxFor(m => m.LinkUrl, new { @class = "form-control", placeholder = "快速连接" })
-                 </div>
-                <div role="tabpanel" class="tab-pane" id="logo">
-                    @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control"})&nbsp;&nbsp;<a href="javascript:openWindow('/Pagesadmin/Home/UploadImage?obj=ImageUrl',400,100,200);">上传图片</a>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="banner">
-                    @Html.TextBoxFor(m => m.BannerAdImageUrl, new { @class = "form-control" })<span class="tip">只针对根分类有用</span><a href="javascript:openWindow('/Pagesadmin/Home/UploadImage?obj=BannerAdImageUrl',400,100,200);">上传图片</a>
-                </div>
-              </div>
-
             </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-1 control-label">其他：</label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1 control-label">
+            其他：</label>
         <div class="col-sm-10">
-           @Html.CheckBoxFor(m => m.IsEnabled)是否启用<br />
-           @Html.CheckBoxFor(m => m.IsDeleted)是否删除<br />
-           @Html.CheckBoxFor(m => m.IsShowFirstChildNode)是否显示第一个子节点
+            @Html.CheckBoxFor(m => m.IsEnabled)是否启用<br />
+            @Html.CheckBoxFor(m => m.IsDeleted)是否删除<br />
+            @Html.CheckBoxFor(m => m.IsShowFirstChildNode)是否显示第一个子节点
         </div>
-      </div>      
-      <div class="form-group">
+    </div>
+    <div class="form-group">
         <div class="col-sm-offset-1 col-sm-10">
-          <button type="submit" class="btn btn-primary">@(isAdd ? "增加" : "更新")</button>
+            <button type="submit" class="btn btn-primary">@(isAdd ? "增加" : "更新")</button>
         </div>
-      </div>
+    </div>
     </form>
 </fieldset>
