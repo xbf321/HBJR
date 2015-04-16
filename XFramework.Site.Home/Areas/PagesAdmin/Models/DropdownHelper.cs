@@ -52,20 +52,24 @@ namespace XFramework.Site.PagesAdmin.Models
         /// </summary>
         /// <param name="name"></param>
         /// <param name="selectValue"></param>
+        /// <param name="exceptId">排除的ID</param>
         /// <returns></returns>
-        public static string RenderCategoryListWithOptGroup(string name, object selectValue) {
+        public static string RenderCategoryListWithOptGroup(string name, object selectValue, params int[] exceptIds)
+        {
             StringBuilder sBuilder = new StringBuilder();
             sBuilder.AppendFormat(@"<select id=""{0}"" name=""{0}"">", name);
             sBuilder.Append(@"<option value=""0"">==请选择==</option>");
             var langDataTable = XFramework.Common.EnumHelper.EnumListTable(typeof(WebLanguage));
             foreach (DataRow dr in langDataTable.Rows)
             {
-                int value = Convert.ToInt32(dr["Value"]);
-                sBuilder.AppendFormat(@"<optgroup label=""{0}"">",dr["Text"]);
+                int value = Convert.ToInt32(dr["Value"]);                
                 var lang = (WebLanguage)Enum.Parse(typeof(WebLanguage), value.ToString());
-                var oldList = CategoryService.ListByLanguage(lang).Where(p=>p.IsDeleted==false).ToList();
+                var oldList = CategoryService.ListByLanguage(lang).Where(p => (p.IsDeleted == false && !exceptIds.Contains(p.Id))).ToList();
                 var newList = new List<CategoryInfo>();
+
                 CategoryService.BuildListForTree(newList, oldList, 0);
+
+                sBuilder.AppendFormat(@"<optgroup label=""{0}"">", dr["Text"]);
                 foreach (var item in newList)
                 {
                     sBuilder.AppendFormat("<option value=\"{0}\" parentid=\"{3}\" {2}>{1}</option>", item.Id, item.Name, selectValue.Equals(item.Id) ? "selected=\"selected\"" : string.Empty,item.ParentId);

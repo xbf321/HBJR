@@ -23,14 +23,14 @@ namespace XFramework.Site.Home.Controllers
             if (lang == WebLanguage.zh_cn)
             {
                 //显示启用的以及未删除的
-                ViewBag.ProductService = CategoryService.ListByParentId(4).Where(p => (p.IsEnabled == true && p.IsDeleted == false)).ToList();
+                ViewBag.ProductService = CategoryService.ListByParentId(5).Where(p => (p.IsEnabled == true && p.IsDeleted == false)).ToList();
 
 
                 ViewBag.CompanyNews = ArticleService.ListWithoutPageV2("新闻中心/公司新闻", 7, lang);
 
                 ViewBag.IndustryNews = ArticleService.ListWithoutPageV2("新闻中心/行业新闻", 7, lang);
 
-                ViewBag.FocusImageList = ArticleService.ListWithoutPageV2("首页设置/焦点图片", 4, lang);
+                ViewBag.FocusImageList = ArticleService.ListWithoutPageV2("首页设置/焦点图片", 5, lang);
 
                 ViewBag.Business = ArticleService.ListWithoutPageV2("企业业绩", 7, lang);
 

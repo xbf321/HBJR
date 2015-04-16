@@ -112,10 +112,21 @@ namespace XFramework.Site.Home.Controllers
                 return Content(string.Empty);
             }
             StringBuilder sbHtml = new StringBuilder();
+
+            var rootCategoryInfo = CategoryService.Get(rootId);
             //显示启用的以及未删除的所有分类
             var catAllList = CategoryService.ListByLanguage(language).Where(p=>(p.IsEnabled == true && p.IsDeleted == false));
             //二级分类
             var subList = catAllList.Where(p=>p.ParentId == rootId);
+
+            //没有二分类的话，就显示主分类
+            //避免菜单空着
+            if(subList.Count() == 0){
+                sbHtml.AppendFormat("<h3 class=\"on\"><a href=\"{1}\" title=\"{0}\">{0}</a></h3>",
+                    rootCategoryInfo.Name,
+                    rootCategoryInfo.Url);
+                
+            }
             foreach(var item in subList){
                 bool isH3Selected = item.Id == selectedId ;
                 sbHtml.AppendFormat("<h3{1}><a href=\"{2}\" title=\"{0}\" id=\"{3}\">{0}</a></h3>", 
