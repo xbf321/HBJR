@@ -140,7 +140,8 @@ a:hover{text-decoration:underline;}
 
 
 .product-list {  margin-right:-10px; }
-.product-list li{ width:180px; float:left; margin-right:10px; margin-bottom:10px;}
+.product-list li{ width:180px;height:150px; float:left; margin-right:10px; margin-bottom:10px;}
+.product-list li img{width:180px;height:135px; overflow:hidden;}
 .product-list .title{ text-align:center; display:block; line-height:15px; height:15px;text-align:center;  font-weight:bold; }
     
 .product-detail{}
@@ -148,3 +149,4 @@ a:hover{text-decoration:underline;}
 .product-detail > .sub-title,
 .product-detail > .pic{ text-align:center;   }
 .product-detail > .title   {  display:block; font:bold 24px/55px 微软雅黑;}
+.product-detail > .content{ width:730px;  word-wrap: break-word;padding:10px;}
