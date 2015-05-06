@@ -42,6 +42,9 @@ namespace XFramework.Services
         public static IPageOfList<ProductInfo> List(SearchSetting setting)
         {
             var list = ProductManage.List(setting);
+            foreach(var item in list){
+                LoadExtendInfo(item,setting.Language);
+            }
             return list;
         }
         #endregion
@@ -69,7 +72,18 @@ namespace XFramework.Services
         public static ProductInfo GetByGUID(string guid, WebLanguage language = WebLanguage.zh_cn)
         {
             var model = ProductManage.GetByGUID(guid);
+            LoadExtendInfo(model);
             return model;
+        }
+        #endregion
+
+        private static void LoadExtendInfo(ProductInfo model,WebLanguage language = WebLanguage.zh_cn) {
+            model.LinkUrl = string.Format("{0}/product/detail?guid={1}",language == WebLanguage.zh_cn ? string.Empty : "/en",model.GUID);
+        }
+
+        #region == 更新浏览数 ==
+        public static void UpdateViewCount(int id) {
+            ProductManage.UpdateViewCount(id);
         }
         #endregion
     }

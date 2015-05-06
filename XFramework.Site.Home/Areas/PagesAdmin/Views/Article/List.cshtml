@@ -3,12 +3,16 @@
     ViewBag.Title = "文章管理";
     var articleList = ViewBag.ArticleList;
     int catId = Controleng.Common.CECRequest.GetQueryInt("cid", 0);
+    int[] exceptIds = new int[]{
+        Convert.ToInt32(XFramework.Common.LanguageResourceHelper.GetString("product-category-root-id",XFramework.Model.WebLanguage.zh_cn)),
+        Convert.ToInt32(XFramework.Common.LanguageResourceHelper.GetString("product-category-root-id",XFramework.Model.WebLanguage.en))
+    };
 }
 <fieldset>
     <legend>文章管理</legend>
     <div class="pull-left">
         <div class="row" style="width: 600px;">
-            <div class="col-md-11">@Html.Raw(XFramework.Site.PagesAdmin.Models.DropdownHelper.RenderCategoryListWithOptGroup("CategoryId", catId))</div>
+            <div class="col-md-11">@Html.Raw(XFramework.Site.PagesAdmin.Models.DropdownHelper.RenderCategoryListWithOptGroup("CategoryId", catId, exceptIds))</div>
             <div class="col-md-1">
                 <input type="button" class="btn btn-success" value="查询" id="btnSearch" /></div>
         </div>

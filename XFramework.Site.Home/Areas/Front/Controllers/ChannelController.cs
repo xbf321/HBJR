@@ -131,8 +131,8 @@ namespace XFramework.Site.Home.Controllers
                 bool isH3Selected = item.Id == selectedId ;
                 sbHtml.AppendFormat("<h3{1}><a href=\"{2}\" title=\"{0}\" id=\"{3}\">{0}</a></h3>", 
                     item.Name, 
-                    isH3Selected ? " class=\"on\"" : string.Empty, 
-                    string.IsNullOrEmpty(url) ? item.Url : string.Format(url,item.Id), 
+                    isH3Selected ? " class=\"on\"" : string.Empty,
+                    string.IsNullOrEmpty(url) ? item.Url : string.Format((language == WebLanguage.zh_cn ? string.Empty : "/en") + url, item.Id), 
                     item.Id);
 
                 //三级分类
@@ -148,7 +148,7 @@ namespace XFramework.Site.Home.Controllers
                         sbHtml.AppendFormat("<li{1}><a href=\"{2}\" title=\"{0}\">{0}</a></li>", 
                             sub.Name, 
                             sub.Id == selectedId ? " class=\"on\"" : string.Empty,
-                            string.IsNullOrEmpty(url) ? sub.Url : string.Format(url, sub.Id));
+                            string.IsNullOrEmpty(url) ? sub.Url : string.Format((language == WebLanguage.zh_cn ? string.Empty : "/en") + url, sub.Id));
                     }
                     sbHtml.Append("</ul>");
                 }
@@ -165,7 +165,7 @@ namespace XFramework.Site.Home.Controllers
         /// <param name="catId"></param>
         /// <returns></returns>
         [ChildActionOnly]
-        public ActionResult RenderSubNavForChannelPage(int catId, string customTitle = "", WebLanguage language = WebLanguage.zh_cn)
+        public ActionResult RenderSubNavForChannelPage(int catId, string customTitle = "", WebLanguage language = WebLanguage.zh_cn,string url = "")
         {
 
             /*
@@ -184,7 +184,20 @@ namespace XFramework.Site.Home.Controllers
 
                 foreach (var item in upList)
                 {
-                    sbNav.AppendFormat("&nbsp;&nbsp;>&nbsp;&nbsp;<a href=\"{1}\" title=\"{0}\">{0}</a>",item.Name,item.Url);
+                    if (!string.IsNullOrEmpty(url))
+                    {
+                        if (string.IsNullOrEmpty(item.LinkUrl))
+                        {
+                            sbNav.AppendFormat("&nbsp;&nbsp;>&nbsp;&nbsp;<a href=\"{0}\" title=\"{1}\">{1}</a>", string.Format((language == WebLanguage.zh_cn ? string.Empty : "/en") + url, item.Id), item.Name);
+                        }
+                        else {
+                            sbNav.AppendFormat("&nbsp;&nbsp;>&nbsp;&nbsp;<a href=\"{0}\" title=\"{1}\">{1}</a>",item.LinkUrl,item.Name);
+                        }
+                    }
+                    else {
+                        sbNav.AppendFormat("&nbsp;&nbsp;>&nbsp;&nbsp;<a href=\"{1}\" title=\"{0}\">{0}</a>", item.Name, item.Url);
+                    }
+                    
                 }
             }
             if (!string.IsNullOrEmpty(customTitle))

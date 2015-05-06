@@ -77,6 +77,19 @@ namespace XFramework.Site.Home
             );
             #endregion
 
+            #region == Product ==
+            context.MapRoute(
+                "product_default",
+                "product/{action}",
+                new { controller = "Product", action = "Index" }
+            );
+            context.MapRoute(
+                "en_product_default",
+                "en/product/{action}",
+                new { controller = "Product", action = "Index" }
+            );
+            #endregion
+
             #region == Default ==
             context.MapRoute(
                 "EnDefault", // Route name

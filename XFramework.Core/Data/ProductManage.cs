@@ -205,5 +205,14 @@ namespace XFramework.Data
             return model;
         }
         #endregion
+
+        #region
+        public static void UpdateViewCount(int id) {
+            string strSQL = "UPDATE Products SET ViewCount = ViewCount + 1 WHERE Id = @Id";
+            SqlParameter parm = new SqlParameter("Id", id);
+
+            Goodspeed.Library.Data.SQLPlus.ExecuteNonQuery(CommandType.Text, strSQL, parm);
+        }
+        #endregion
     }
 }

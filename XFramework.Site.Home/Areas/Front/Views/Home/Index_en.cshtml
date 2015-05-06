@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "../Shared/_Layout.cshtml";
-    ViewBag.Title = "河北九荣贸易有限公司";
+    ViewBag.Title = "Hebei jiu rong trade co.,LTD";
     //产品服务
     var productService = ViewBag.ProductService;
 }
@@ -19,6 +19,7 @@
     <script type="text/javascript">
         _GLOBAL.rootId = -1;
     </script>
+    <script src="@Url.Content("~/scripts/jquery.slides.js")" type="text/javascript"></script>
 }
 @*<div class="hotnews_bg">
     <div id="hotnews_search_bar">
@@ -45,22 +46,22 @@
     <!--products begin-->
     <div id="products_bar">
         <div class="products_pic">
-            <ul class="focus-pic-list">
+            <ul class="focus-pic-list" id="product-slide">
                 @foreach (var item in productService)
                 {
-                    <li><a href="@item.Url" title="@item.Name">
-                        <img src="@item.ImageUrl" alt="@item.Name" /></a></li>
+                    <a href="/en/product/?cid=@(item.Id)" title="@item.Name">
+                        <img data-src="@item.ImageUrl" src="@item.ImageUrl" alt="@item.Name" /></a>
                 }
             </ul>
         </div>
         <div class="products_nav">
             <h2>
-                产品与服务</h2>
-            <ul class="focus-text-list">
+                PRODUCTS</h2>
+            <ul class="focus-text-list" id="product-slide-text">
                 @{
                     for (int i = 0; i < productService.Count; i++)
                     { 
-                    <li@Html.Raw(i == 0 ? " class=\"on\"" : "")><a href="@productService[i].Url" title="@productService[i].Name">@productService[i].Name</a></li>
+                    <li@Html.Raw(i == 0 ? " class=\"on\"" : "")><a href="/en/product/?cid=@productService[i].Id" title="@productService[i].Name">@productService[i].Name</a></li>
                     }
                 }
             </ul>
@@ -148,21 +149,25 @@
     <!--links end-->
     <span class="box_10"></span>
 </div>
-@section footer{
-    <script type="text/javascript">
-        KISSY.use("switchable", function (S, Switchable) {
-            var Slide = S.Slide, Easing = S.Easing, Tabs = S.Tabs, DOM = S.DOM;
-            S.ready(function (S) {
-                var slide = new Slide('#products_bar', {
-                    contentCls: 'focus-pic-list',
-                    navCls: 'focus-text-list',
-                    activeTriggerCls: 'on',
-                    delay: .2,
-                    effect: 'fade',
-                    easing: 'easeBoth',
-                    duration: .8
-                });
-            });
-        });
-    </script>
+@section scriptready{
+
+    $('#product-slide').slidesjs({
+        width: 730,
+        height: 304,
+        navigation: false,
+        pagination: false,
+        play:{
+            auto: true
+        },
+        callback: {
+            complete: function(index){
+                var text = $('#product-slide-text');
+                text.children().removeClass('on').eq(index-1).addClass('on');
+            }
+        }
+    });
+
+    $('.switch-nav-news li').on('mouseenter',function(index){
+       console.info(this,index);
+    });
 }

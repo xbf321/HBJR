@@ -16,6 +16,9 @@ namespace XFramework.Model
         public DateTime PublishDateTime { get; set; }
         public DateTime CreateDateTime { get; set; }
 
+        //扩展字段
+        public string LinkUrl { get; set; }
+
         public ProductInfo() {
             SImageUrl = "###";
             BImageUrl = "###";

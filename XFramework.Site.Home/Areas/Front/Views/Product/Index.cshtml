@@ -1,17 +1,17 @@
 ﻿@{
-    Layout = "../Shared/_ChannelLayout.cshtml";
+    Layout = "../Shared/_ProductLayout.cshtml";
 }
 <ul class="product-list">
     @foreach(var item in ViewBag.List){
         <text>
-            <li><a href="/product/detail?guid=@item.GUID" title="@item.Title">
+            <li><a href="@(item.LinkUrl)" title="@item.Title">
                 <img src="@(item.SImageUrl)" title="@item.Title" />
                 <span class="title">@item.Title</span>
             </a></li>
         </text>
     }
     @if(ViewBag.List.Count == 0){
-        <text>暂无数据</text>
+        <text>@(XFramework.Common.LanguageResourceHelper.GetString("empty",PageData["Language"]))</text>
     }
 </ul>
 @Html.Raw(XFramework.Common.PagerBarHelper.Render(ViewBag.List.PageIndex, ViewBag.List.PageSize, ViewBag.List.TotalItemCount, new { @class = "pagebar" }))

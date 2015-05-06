@@ -55,6 +55,9 @@
             $('.btn-add').click(function(){
                 var selectValue = ddlLangObj.val();
                 if(selectValue != "0"){
+                    if(selectValue === '-1'){
+                        selectValue = 0;
+                    }
                     window.location.href = 'add?id='+selectValue;
                 }                
             });

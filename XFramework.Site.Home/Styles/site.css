@@ -1,4 +1,4 @@
-﻿body {margin:0 auto; color:#000; font-family:"宋体"; line-height:1.5; font-size:12px;}
+﻿body {margin:0 auto; color:#000;font:12px/1.5 tahoma,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;}
 div,form,ol,span,dl,dt,dd{border:0;margin:0;padding:0;}
 img {border:0; margin:0; padding:0;}
 ul,li {padding:0;margin:0;list-style-type: none; font-weight:normal;}
@@ -18,13 +18,15 @@ a:hover{text-decoration:underline;}
 .redao{color:red;}
 
 /* topbar/menu/hotnews/search CSS*/
-.topbg_bar{background:url(../images/top_bg.gif) repeat-x left top;}
-#top_bar{ width:980px; margin:0 auto; height:214px; position:relative;}
-.top_nav{position:absolute; right:0; top:14px; color:#A3A3A3;}
+.topbg_bar{background:url(../images/top_bg.gif) repeat-x left top;background-size: contain;}
+#top_bar{ width:960px; margin:0 auto; height:220px; position:relative;}
+.top_nav{position:absolute; right:10px; top:14px; color:#fff;}
+.top_nav a{color:#fff;}
 .menuSearch_bg{background:url(../images/menu_bg.gif) repeat-x left top;}
-.hotnews_bg{ height:37px;background:url(../images/menu_bg.gif) repeat-x left bottom;}
+.hotnews_bg{ height:37px;background-color: #f1f1f1;}
 #menu_bar{width:960px; height:36px; margin:0 auto; }
 #menu_bar li{float:left; line-height:36px; padding:0 31px; background:url(../images/menu_line.gif) no-repeat right center;}
+#menu_bar li:last-child{ background-image:none;}
 #menu_bar .bgnone{background:none;}
 #menu_bar .on{ height:36px; overflow:hidden; background:#E7090A; font-weight:bold;}
 #menu_bar a,#menu_bar a:visited{color:#fff; font-size:14px;}
@@ -68,12 +70,10 @@ a:hover{text-decoration:underline;}
 .liuydown_bar img{margin-left:7px;}
 
 /* footer CSS*/
-#footer_bar{ height:80px; background:url(../images/footer_bg.gif) repeat-x left top;color:#e7e7e7;}
-.footer_logoinfo{width:960px; margin:0 auto;}
-.footer_logo{float:left; padding:10px 50px 0px 20px;}
-.footer_info{ width:500px; float:left; margin-top:13px;}
-.copright_map{float:right; line-height:80px;}
-.copright_map a,.copright_map a:visited{color:#e7e7e7;}
+#footer_bar{width:960px; margin:0 auto; text-align:center;color: #999;border-top:1px solid #ddd;padding-bottom:20px;}
+#footer_bar a{color:#999;}
+#footer_bar .link {  margin: 0;  padding: 2px 0 0; display: block; line-height:30px;height:30px;}
+#footer_bar .copyright {margin-top:10px;}
 
 
 /* channel CSS*/
@@ -81,7 +81,7 @@ a:hover{text-decoration:underline;}
 .about_list li{width:175px; height:35px; line-height:35px; background:url(../images/sort_bg.gif) repeat-x left top; padding-left:25px; font-size:14px; font-family:"微软雅黑";}
 .about_list .on{background:url(../images/sort_ico.gif) no-repeat left top;}
 .about_list .on a,.about_list .on a:visited{color:#E7090A;}
-.about_list2 h3{width:175px; height:35px; line-height:35px; background:url(../images/sort_bg.gif) repeat-x left top; padding-left:25px; font-size:14px; font-family:"微软雅黑";}
+.about_list2 h3{width:175px; height:35px; line-height:35px; background:url(../images/sort_bg.gif) repeat-x left top; padding-left:25px; font-size:14px; font-family:"微软雅黑"; overflow:hidden;}
 .about_list2 h3.on{background:url(../images/sort_ico.gif) no-repeat left top;}
 .about_list2sort .on{background:#f7f7f7;font-weight:bold;}
 .about_list2sort .on a,.about_list2sort .on a:visited{color:#E7090A;}
@@ -140,9 +140,10 @@ a:hover{text-decoration:underline;}
 
 
 .product-list {  margin-right:-10px; }
-.product-list li{ width:180px;height:150px; float:left; margin-right:10px; margin-bottom:10px;}
-.product-list li img{width:180px;height:135px; overflow:hidden;}
-.product-list .title{ text-align:center; display:block; line-height:15px; height:15px;text-align:center;  font-weight:bold; }
+.product-list::after {clear:both;  content: "";display: table;}
+.product-list li{ width:180px;float:left; margin-right:10px; margin-bottom:10px;}
+.product-list li img{width:180px;height:135px; overflow:hidden;  border: 1px solid #ddd;}
+.product-list .title{ text-align:center; display:block; line-height:25px; overflow:hidden; height:25px;text-align:center;  font-weight:bold; }
     
 .product-detail{}
 .product-detail > .title,
@@ -150,3 +151,7 @@ a:hover{text-decoration:underline;}
 .product-detail > .pic{ text-align:center;   }
 .product-detail > .title   {  display:block; font:bold 24px/55px 微软雅黑;}
 .product-detail > .content{ width:730px;  word-wrap: break-word;padding:10px;}
+
+.pagebar{ text-align:right; margin-top:10px;}
+.pagebar span {margin-left:10px;}
+.pagebar em { font-style:normal;margin-left:5px;margin-right:5px;}

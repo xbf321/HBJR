@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>@ViewBag.Title - 河北九荣贸易有限公司</title>
+    <title>@ViewBag.Title - @(PageData["Language"] == XFramework.Model.WebLanguage.en ? "Hebei jiu rong trade co.,LTD" : "河北九荣贸易有限公司")</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=7" />
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
@@ -43,9 +43,7 @@
     <span class="box_10"></span>
     <!--footer begin-->
     <div id="footer_bar">
-        <div class="footer_logoinfo">
-            @Html.Raw(XFramework.Common.LanguageResourceHelper.GetString("footer-text", PageData["Language"]))
-        </div>
+        @Html.Raw(XFramework.Common.LanguageResourceHelper.GetString("footer-text", PageData["Language"]))
     </div>
     <!--footer end-->
     <script type="text/javascript">

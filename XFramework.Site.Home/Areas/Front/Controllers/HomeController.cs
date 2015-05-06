@@ -6,6 +6,7 @@ using XFramework.Services;
 using XFramework.Model;
 using XFramework.Site.Home.Models;
 using System;
+using XFramework.Common;
 
 namespace XFramework.Site.Home.Controllers
 {
@@ -20,24 +21,24 @@ namespace XFramework.Site.Home.Controllers
             
             WebLanguage lang = XFrontContext.Current.Language;
             string viewName = string.Format("Index_{0}", lang.ToString());
+            int productRootId = Convert.ToInt32(LanguageResourceHelper.GetString("product-category-root-id", lang));
             if (lang == WebLanguage.zh_cn)
             {
                 //显示启用的以及未删除的
-                ViewBag.ProductService = CategoryService.ListByParentId(5).Where(p => (p.IsEnabled == true && p.IsDeleted == false)).ToList();
+
+                ViewBag.ProductService = CategoryService.ListByParentId(productRootId).Where(p => (p.IsEnabled == true && p.IsDeleted == false)).Take(8).ToList();
 
 
-                ViewBag.CompanyNews = ArticleService.ListWithoutPageV2("新闻中心/公司新闻", 7, lang);
-
-                ViewBag.IndustryNews = ArticleService.ListWithoutPageV2("新闻中心/行业新闻", 7, lang);
+                ViewBag.CompanyNews = ArticleService.ListWithoutPageV2("新闻动态", 7, lang);
 
                 ViewBag.FocusImageList = ArticleService.ListWithoutPageV2("首页设置/焦点图片", 5, lang);
 
-                ViewBag.Business = ArticleService.ListWithoutPageV2("企业业绩", 7, lang);
+                ViewBag.Business = ArticleService.ListWithoutPageV2("技术资料", 7, lang);
 
                 ViewBag.NoticeList = NoticeService.List();
             }
             if(lang == WebLanguage.en){
-                ViewBag.ProductService = CategoryService.ListByParentId(110).Where(p => (p.IsEnabled == true && p.IsDeleted == false)).ToList();
+                ViewBag.ProductService = CategoryService.ListByParentId(productRootId).Where(p => (p.IsEnabled == true && p.IsDeleted == false)).Take(8).ToList();
             }
             return View(viewName);
         }

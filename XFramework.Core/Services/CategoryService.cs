@@ -236,7 +236,7 @@ namespace XFramework.Services
             if (plist.Count == 0) { return; }
             foreach (var item in plist)
             {
-                //if (item.ParentId == 0)
+                if (item.ParentId == parentId)
                 {
                     newList.Add(item);
                 }

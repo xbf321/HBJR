@@ -34,7 +34,8 @@ namespace XFramework.Site.Home.Controllers
                 PageIndex = pageIndex,
                 PageSize = 20,
                 CategoryId = cid,
-                ShowDeleted = false
+                ShowDeleted = false,
+                Language = lang
             });
 
             return View();
@@ -51,6 +52,9 @@ namespace XFramework.Site.Home.Controllers
             int rootId = Convert.ToInt32(LanguageResourceHelper.GetString("product-category-root-id", lang));
             ViewBag.RootCategoryInfo = CategoryService.Get(rootId);
             ViewBag.CurrentCategoryInfo = CategoryService.Get(productInfo.CategoryId);
+
+            //更新浏览数
+            ProductService.UpdateViewCount(productInfo.Id);
 
             return View(productInfo);
         }
